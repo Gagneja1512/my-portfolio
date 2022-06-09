@@ -16,7 +16,7 @@
     display: flex;
     flex-direction: column;
     margin-left: 7.5rem;
-    animation: MoveInLeft 2s;
+    animation: MoveInLeft 1.5s;
 }
 
 .i-name>:nth-child(1)
@@ -42,11 +42,11 @@
 }
 
 .i-button{
-    width: 6rem;
+    width: 8rem;
     height: 2rem ;
     margin-left: 7.5rem;
     transition: all .3s;
-    animation: MoveInLeft 2s;
+    animation: MoveInLeft 1.5s;
 }
 
 .i-button:hover{
@@ -58,7 +58,7 @@
     display: flex;
     gap: 0rem;
     margin-left: 7.5rem;
-    animation: MoveInRight 2s;
+    animation: MoveInRight 1.5s;
 }
 
 @keyframes MoveInRight {

@@ -2,6 +2,19 @@
     height: 10vh;
     display: flex;
     justify-content: space-between;
+    animation: MoveInTop 1.5s;
+}
+
+@keyframes MoveInTop{
+    0%{
+        transform: translateY(1rem);
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .n-left{
