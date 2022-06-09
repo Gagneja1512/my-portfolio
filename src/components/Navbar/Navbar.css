@@ -38,9 +38,14 @@ ul{
     margin-right: 4rem;
 }
 
+.n-list > ul > li{
+    transition: all .3s;
+}
+
 .n-list > ul > li:hover{
     cursor: pointer;
-    color : var(--orange)
+    color : var(--orange) ;
+    transform: scale(1.15);
 }
 
 .n-button{

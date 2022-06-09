@@ -5,14 +5,13 @@ const Navbar = () => {
     return (
         <div className="n-wrapper">
             <div className="n-left">
-                <div className="n-name">Aaditya</div>
                 <span>Toggle</span>
             </div>
             <div className="n-right">
                 <div className="n-list">
                     <ul>
                         <li>Home</li>
-                        <li>Experience</li>
+                        <li>Projects</li>
                         <li>Portfolio</li>
                     </ul>
                 </div>
