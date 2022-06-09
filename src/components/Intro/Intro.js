@@ -11,7 +11,7 @@ const Intro = () => {
                 <div className="i-name">
                     <span>Hi...</span>
                     <span>Aaditya Gagneja</span>
-                    <span>Currently pursuing Computer science and engineering from National Institute of Technology, Hamirpur.I'm an executive member at App Team of our institute.</span>
+                    <span>Currently pursuing Computer science and engineering from National Institute of Technology, Hamirpur.I'm an executive member at App Team of our institute.Lives in Hanumangarh , Rajasthan</span>
                 </div>
 
                 <button className="button i-button">CV</button>

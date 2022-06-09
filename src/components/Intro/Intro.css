@@ -16,6 +16,7 @@
     display: flex;
     flex-direction: column;
     margin-left: 7.5rem;
+    animation: MoveInLeft 2s;
 }
 
 .i-name>:nth-child(1)
@@ -27,7 +28,7 @@
 
 .i-name>:nth-child(2)
 {
-    color: var(--orange);
+    color: #9BA3EB;
     font-weight: bold;
     font-size: 3rem;
 }
@@ -45,6 +46,7 @@
     height: 2rem ;
     margin-left: 7.5rem;
     transition: all .3s;
+    animation: MoveInLeft 2s;
 }
 
 .i-button:hover{
@@ -56,6 +58,41 @@
     display: flex;
     gap: 0rem;
     margin-left: 7.5rem;
+    animation: MoveInRight 2s;
+}
+
+@keyframes MoveInRight {
+    0%{
+        opacity: 0;
+        transform: translateX(-10rem);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateX(1rem);
+    }
+    
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes MoveInLeft {
+    0%{
+        opacity: 0;
+        transform: translateX(10rem);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateX(-1rem);
+    }
+    
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
 }
 
 .i-icons>*{
