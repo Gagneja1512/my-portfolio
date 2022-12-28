@@ -1,8 +1,12 @@
 import React from "react";
 import './Navbar.css'
 import { NavLink } from 'react-router-dom'
+import NavbarItem from './NavbarItem'
 
 const Navbar = () => {
+
+    const pages = ['Home' , 'About' , 'Skills' , 'Projects' , 'Contact']
+
     return (
         <div>
 
@@ -15,21 +19,9 @@ const Navbar = () => {
                     <div className="nav__menu">
                         <div className="menu">
                             <ul className="nav__list">
-                                <li className="nav__item">
-                                    <NavLink to="/home" className="nav__link" activeClassName="active-link">Home</NavLink>
-                                </li>
-                                <li className="nav__item">
-                                    <NavLink to="/about" className="nav__link" activeClassName="active-link">About</NavLink>
-                                </li>
-                                <li className="nav__item">
-                                    <NavLink to="/skills" className="nav__link" activeClassName="active-link">Skills</NavLink>
-                                </li>
-                                <li className="nav__item">
-                                    <NavLink to="/project" className="nav__link" activeClassName="active-link">Projects</NavLink>
-                                </li>
-                                <li className="nav__item">
-                                    <NavLink to="/contact" className="nav__link" activeClassName="active-link">Contact</NavLink>
-                                </li>
+                                {pages.map(page => (
+                                    <NavbarItem key={page} pagename={page}></NavbarItem>
+                                ))}
                             </ul>
                         </div>
                     </div>
