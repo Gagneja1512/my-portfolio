@@ -1,29 +1,34 @@
 import React from "react";
 import './Navbar.css'
+import { NavLink } from 'react-router-dom'
 
 const Navbar = () => {
     return (
         <div>
+
             <aside className="sidebar" id="sidebar">
                 <nav className="nav">
                     <div className="nav__logo">
-                        <a href="index.html" className="nav__logo-text">AG</a>
+                        <p className="nav__logo-text">AG</p>
                     </div>
 
                     <div className="nav__menu">
                         <div className="menu">
                             <ul className="nav__list">
                                 <li className="nav__item">
-                                    <a href="#home" className="nav__link active-link">Home</a>
+                                    <NavLink to="/home" className="nav__link" activeClassName="active-link">Home</NavLink>
                                 </li>
                                 <li className="nav__item">
-                                    <a href="#about" className="nav__link">About</a>
+                                    <NavLink to="/about" className="nav__link" activeClassName="active-link">About</NavLink>
                                 </li>
                                 <li className="nav__item">
-                                    <a href="#skills" className="nav__link">Skills</a>
+                                    <NavLink to="/skills" className="nav__link" activeClassName="active-link">Skills</NavLink>
                                 </li>
                                 <li className="nav__item">
-                                    <a href="#contact" className="nav__link">Contact</a>
+                                    <NavLink to="/project" className="nav__link" activeClassName="active-link">Projects</NavLink>
+                                </li>
+                                <li className="nav__item">
+                                    <NavLink to="/contact" className="nav__link" activeClassName="active-link">Contact</NavLink>
                                 </li>
                             </ul>
                         </div>
@@ -34,8 +39,9 @@ const Navbar = () => {
                     </div>
                 </nav>
             </aside>
+
         </div>
     )
-} ;
+};
 
-export default Navbar ;
+export default Navbar;

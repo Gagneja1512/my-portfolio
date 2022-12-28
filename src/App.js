@@ -1,12 +1,27 @@
 import Navbar from "./components/Navbar/Navbar";
 import './App.css'
-import Intro from "./components/Intro/Intro";
+import Home from "./components/Intro/Home";
+import { Redirect, Route, Switch } from 'react-router-dom'
+import Contact from "./components/Contact/Contact";
 
 function App() {
   return (
     <div className="App">
-      <Navbar/>
-      <Intro/>
+      <Navbar />
+      <Switch>
+        <Route path="/" exact>
+          <Redirect to="/home"></Redirect>
+        </Route>
+
+        <Route path="/home" exact>
+          <Home></Home>
+        </Route>
+
+        <Route path="/contact">
+          <Contact></Contact>
+        </Route>
+      </Switch>
+      
     </div>
   );
 }
