@@ -1,45 +1,55 @@
-:root
-{
-  --yellow: #F5C32C;
-    --orange : #FCA61F;
-    --black : #242D49;
-    --gray : #788097;
-    --blueCard : #DDF8FE;
-    --purple: rgb(238 210 255);
-    --boxShadow : 0px 19px 60px rgb(0 0 0 / 8%);
-    --orangeCard: rgba(252, 166, 31, 0.45);
-    --smboxShadow: -79px 51px 60px rgba(0, 0, 0, 0.08);
-    --blue : #9BA3EB;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --hue-color: 242;
+
+  --skin-color: hsl(342, 92%, 46%);
+  --title-color: hsl(var(--hue-color), 8%, 95%);
+  --text-color: hsl(var(--hue-color), 8%, 85%);
+  --body-color: hsl(var(--hue-color), 19%, 5%);
+  --box-color: hsl(var(--hue-color), 14%, 10%);
+  --scroll-bar-color: hsl(var(--hue-color), 12%, 38%);
+  --scroll-thumb-color: hsl(var(--hue-color), 12%, 26%);
+
+
+  --body-font: 'poppins', sans-serif;
+
+
+  --biggest-font-size: 3rem;
+  --h1-font-size: 2.25rem;
+  --h2-font-size: 1.5rem;
+  --h3-font-size: 1.25rem;
+  --normal-font-size: 1rem;
+  --small-font-size: .875rem;
+  --smaller-font-size: .813rem;
+
+
+  --font-medium: 500;
+  --font-bold: 600;
+
+
+  --mb-0-25: .25rem;
+  --mb-0-5: .5rem;
+  --mb-0-75: .75rem;
+  --mb-1: 1rem;
+  --mb-1-5: 1.5rem;
+  --mb-2: 2rem;
+  --mb-2-5: 2.5rem;
+  --mb-3: 3rem;
+
+
+  --z-fixed: 10;
+  --z-modal: 100;
 }
 
-.App{
-    padding: 0.5rem 3.5rem;
-    overflow: hidden;
-    color: var(--black);    
+@media screen and (max-width : 1024px) {
+  :root {
+    --biggest-font-size: 2rem;
+    --h1-font-size: 1.5rem;
+    --h2-font-size: 1.25rem;
+    --h3-font-size: 1.12rem;
+    --normal-font-size: .95rem;
+    --small-font-size: .813rem;
+    --smaller-font-size: .75rem;
+  }
 }
-
-.button{
-  border-radius: 34px;
-  border: none;
-  color: white;
-  font-size: 16px;
-  padding: 10px;
-  background: linear-gradient(180deg , #fdc50f 26% , #fb982f 99%);
-  transition: all .3s;
-}
-
-.button:hover{
-  cursor: pointer;
-  color: var(--orange);
-  background : white;
-  border: 1px solid var(--orange);
-  transform: scale(1.1);
-}
-
-body{
-  background: linear-gradient(to right bottom , #FCF8E8 , #FFE5B4);
-}
-
-  
-
-  

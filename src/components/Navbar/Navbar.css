@@ -1,66 +1,80 @@
-.n-wrapper{
-    height: 10vh;
+.sidebar {
+    position: fixed;
+    width: 100px;
+    height: 100vh;
+    background-color: var(--body-color);
+    border-right: 1px solid var(--box-color);
+}
+
+.nav__logo{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 1.8rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--skin-color);
+    text-align: center;
+    margin: auto;
+}
+
+.nav__logo-text {
+    font-size: 1.125rem;
+    color: var(--title-color);
+    font-weight: var(--font-bold);
+    line-height: 40px;
+}
+
+.nav__menu {
+    position: fixed;
+    transform: rotate(-90deg) translateX(-100%);
+    transform-origin: left top;
+    width: 100vh;
+}
+
+.menu {
     display: flex;
-    justify-content: space-between;
-    animation: MoveInTop 1.5s;
 }
 
-@keyframes MoveInTop{
-    0%{
-        transform: translateY(1rem);
-        opacity: 0;
-    }
-
-    100%{
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.n-left{
-    flex: 1;
-    align-items: center;
+.nav__list {
     display: flex;
-    gap: 2rem;
+    flex-direction: row-reverse;
+    margin: -2px auto 0 auto;
 }
 
-.n-name{
-    font-size: 1.3rem;
-    font-weight: bold;
+.nav__link {
+    float: right;
+    height: 100%;
+    line-height: 100px;
+    padding: 0 3rem;
+    color: var(--title-color);
+    font-weight: var(--font-medium);
+    position: relative;
+    transition: .4s;
 }
 
-.n-right{
-    display: flex;
-    flex: 1;
-    align-items: center;
-    justify-content: center;
-    font-weight: 400;
+.nav__link.active-link , .nav__link:hover {
+    color: var(--skin-color);
 }
 
-ul{
-    list-style: none;
+.nav__link.active-link::after , .nav__link:hover::after {
+    position: absolute;
+    content: '';
+    width: 6px;
+    height: 6px;
+    background-color: var(--skin-color);
+    border-radius: 50%;
+    bottom: 1.8rem;
+    left: 0;
+    right: 0;
+    margin: auto;
 }
 
-.n-list{
-    flex: 10;
-}
-
-.n-list > ul{
-    display: flex;
-    gap : 2rem ;
-    margin-right: 4rem;
-}
-
-.n-list > ul > li{
-    transition: all .3s;
-}
-
-.n-list > ul > li:hover{
-    cursor: pointer;
-    color : var(--orange) ;
-    transform: scale(1.15);
-}
-
-.n-button{
-    flex: 2;
+.btn__share {
+    position: absolute;
+    bottom: 1.8rem;
+    left: 0;
+    right: 0;
+    text-align: center;
 }
