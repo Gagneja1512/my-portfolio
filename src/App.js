@@ -3,6 +3,7 @@ import './App.css'
 import Home from "./components/Intro/Home";
 import { Redirect, Route, Switch } from 'react-router-dom'
 import Contact from "./components/Contact/Contact";
+import About from "./components/About/About";
 
 function App() {
   return (
@@ -15,6 +16,10 @@ function App() {
 
         <Route path="/home" exact>
           <Home></Home>
+        </Route>
+
+        <Route path="/about" exact>
+          <About></About>
         </Route>
 
         <Route path="/contact">
