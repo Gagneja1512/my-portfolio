@@ -3,6 +3,8 @@
     margin-bottom: 12rem;
     height: 100%;
     background: var(--background-color);
+    width: 50%;
+    margin: auto;
 }
 
 .skills__info {
@@ -15,13 +17,14 @@
     justify-content: center;
     width: 100%;
     height: 100%;
+    text-align: center;
 }
 
 .skills__title {
     padding-top: 1rem;
     padding-bottom: 1rem;
     color: #D1D5DB;
-    font-size: 2.25rem;
+    font-size: var(--mb-3);
     line-height: 2.5rem;
     font-weight: 700;
     border-bottom-width: 8px;
@@ -32,6 +35,8 @@
     padding-top: 1rem;
     padding-bottom: 1rem;
     font-weight: 700;
+    margin-bottom: 5rem;
+    font-size: var(--mb-1-25);
 }
 
 .skills__card {
@@ -51,11 +56,12 @@
     }
 }
 
-.skills__card-info{
+.skills__card-info {
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    transition: all .5s;
 }
 
-.skills__card-info:hover{
+.skills__card-info:hover {
     box-shadow: 0 4px 6px -1px var(--skin-color);
     scale: 1.10;
 }
