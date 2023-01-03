@@ -15,28 +15,28 @@ const About = () => {
                         <div className="title">
                             <div className="timeline__item">
                                 <div className="circle__dot"></div>
-                                <h3 className="timeline__title">XYZ</h3>
-                                <p className="timeline__text">lorem ipsum</p>
+                                <h3 className="timeline__title">National Institute of Technology , Hamirpur</h3>
+                                <p className="timeline__text">Computer Science and Enginnering</p>
                                 <span className="timeline__date"><i className="uil uil-calender-alt"></i>
-                                    2013-present
+                                    2020-present
                                 </span>
                             </div>
 
                             <div className="timeline__item">
                                 <div className="circle__dot"></div>
-                                <h3 className="timeline__title">XYZ</h3>
-                                <p className="timeline__text">lorem ipsum</p>
+                                <h3 className="timeline__title">National Public Senior Secondary School , Hanumangarh (Rajasthan)</h3>
+                                <p className="timeline__text">Class 12 : 95%</p>
                                 <span className="timeline__date"><i className="uil uil-calender-alt"></i>
-                                    2013-present
+                                    2018-2020
                                 </span>
                             </div>
 
                             <div className="timeline__item">
                                 <div className="circle__dot"></div>
-                                <h3 className="timeline__title">XYZ</h3>
-                                <p className="timeline__text">lorem ipsum</p>
+                                <h3 className="timeline__title">National Public Senior Secondary School , Hanumangarh (Rajasthan)</h3>
+                                <p className="timeline__text">Class 10 : 96%</p>
                                 <span className="timeline__date"><i className="uil uil-calender-alt"></i>
-                                    2013-present
+                                    2005-2018
                                 </span>
                             </div>
                         </div>

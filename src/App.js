@@ -4,6 +4,7 @@ import Home from "./components/Intro/Home";
 import { Redirect, Route, Switch } from 'react-router-dom'
 import Contact from "./components/Contact/Contact";
 import About from "./components/About/About";
+import Skills from "./components/Skills/Skills";
 
 function App() {
   return (
@@ -20,6 +21,10 @@ function App() {
 
         <Route path="/about" exact>
           <About></About>
+        </Route>
+
+        <Route path="/skills" exact>
+          <Skills></Skills>
         </Route>
 
         <Route path="/contact">
