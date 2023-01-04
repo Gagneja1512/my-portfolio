@@ -10,6 +10,7 @@ import Bootstrap from "../../assets/bootstrap.png";
 import Linux from "../../assets/linux.png";
 import Sass from "../../assets/sass.png";
 import Git from "../../assets/git.png";
+import Tyepscript from "../../assets/typescript.png";
 
 const Skills = () => {
     return (
@@ -67,8 +68,8 @@ const Skills = () => {
                             <p className='skills__name'>Git</p>
                         </div>
                         <div className='skills__card-info'>
-                            <img className='skills__image' src={HTML} alt={HTML}></img>
-                            <p className='skills__name'>HTML</p>
+                            <img className='skills__image' src={Tyepscript} alt={HTML}></img>
+                            <p className='skills__name'>Tyepscript</p>
                         </div>
                     </div>
                 </div>
