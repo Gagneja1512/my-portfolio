@@ -1,3 +1,5 @@
+import './Contact.css'
+
 const Contact = () => {
     return (
         <div>
@@ -45,7 +47,7 @@ const Contact = () => {
                             </div>
 
                             <div className="input__container textarea">
-                                <textarea className="input"></textarea>
+                                <textarea rows="10" cols="30" className="input"></textarea>
                                 <label for="">Message</label>
                                 <span>Message</span>
                             </div>
