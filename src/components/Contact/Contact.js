@@ -1,10 +1,11 @@
 import { useRef, useState } from 'react'
 import './Contact.css'
+import emailjs from '@emailjs/browser'
 
 let addClass = 'input__container';
 
 function ValidateEmail(mail) {
-    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+    if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
         return (true)
     }
     alert("You have entered an invalid email address!")
@@ -17,6 +18,7 @@ const Contact = () => {
     const enterEmail = useRef(null)
     const enterUsername = useRef(null)
     const enterMessage = useRef(null)
+    const form = useRef()
 
     const [isFocus, setIsFocus] = useState(false)
     const [isValid, setIsValid] = useState(true)
@@ -54,13 +56,28 @@ const Contact = () => {
         ValidateEmail(enteredEmail);
 
         if (enteredEmail && enteredMessage && enteredUsername) {
-            enterEmail.current.value = ''
-            enterMessage.current.value = ''
-            enterUsername.current.value = ''
+            emailjs.sendForm(
+                "service_m36czh2",
+                "template_ivwen29",
+                form.current,
+                "g3rmu4Z4oH_Q7BP6P"
+            ).then((result) => {
+                console.log(result.text)
+                console.log('message sent')
+            },
+                (error) => {
+                    console.log(error.text)
+                })
+
+
             setIsValid(true)
         } else {
             setIsValid(false)
         }
+
+        enterEmail.current.value = ''
+        enterMessage.current.value = ''
+        enterUsername.current.value = ''
     }
 
 
@@ -75,42 +92,42 @@ const Contact = () => {
                             <div className="contact__card">
                                 <i className="uil uil-envelope-edit contact__card-icon"></i>
                                 <h3 className="contact__card-title">Email</h3>
-                                <span className="contact__card-data">user@gmail.com</span>
+                                <span className="contact__card-data">aadityagagneja1215@gmail.com</span>
                                 <span className="contact__button">Write me <i className="uil uil-arrow-right contact__button-icon"></i></span>
                             </div>
 
                             <div className="contact__card">
-                                <i className="uil uil-whatsapp contact__card-icon"></i>
-                                <h3 className="contact__card-title">Email</h3>
-                                <span className="contact__card-data">user@gmail.com</span>
-                                <span className="contact__button">Write me <i className="uil uil-arrow-right contact__button-icon"></i></span>
+                                <i className="uil uil-github contact__card-icon"></i>
+                                <h3 className="contact__card-title">Github</h3>
+                                <span className="contact__card-data">Aaditya Gagneja</span>
+                                <span className="contact__button">Code<i className="uil uil-arrow-right contact__button-icon"></i></span>
                             </div>
 
                             <div className="contact__card">
-                                <i className="uil uil-facebook-messenger contact__card-icon"></i>
-                                <h3 className="contact__card-title">Email</h3>
-                                <span className="contact__card-data">user@gmail.com</span>
-                                <span className="contact__button">Write me <i className="uil uil-arrow-right contact__button-icon"></i></span>
+                                <i className="uil uil-twitter contact__card-icon"></i>
+                                <h3 className="contact__card-title">Twitter</h3>
+                                <span className="contact__card-data">Aaditya Gagneja</span>
+                                <span className="contact__button">Add me<i className="uil uil-arrow-right contact__button-icon"></i></span>
                             </div>
                         </div>
                     </div>
 
                     <div className="contact-content">
-                        <form onSubmit={formSubmissionHandler} className="contact__form">
+                        <form ref={form} onSubmit={formSubmissionHandler} className="contact__form">
                             <div className={`${addClass}`}>
-                                <input ref={enterUsername} onBlur={inputBlurHandler} onFocus={inputFocusHandler} type="text" className="input"></input>
+                                <input name='user_name' ref={enterUsername} onBlur={inputBlurHandler} onFocus={inputFocusHandler} type="text" className="input"></input>
                                 <label >Username</label>
                                 <span>Username</span>
                             </div>
 
                             <div className={`${addClass}`}>
-                                <input ref={enterEmail} onBlur={inputBlurHandler} onFocus={inputFocusHandler} type="email" className='input'></input>
+                                <input name='user_email' ref={enterEmail} onBlur={inputBlurHandler} onFocus={inputFocusHandler} type="email" className='input'></input>
                                 <label >Email</label>
                                 <span>Email</span>
                             </div>
 
                             <div className={`${addClass}`}>
-                                <textarea ref={enterMessage} onBlur={inputBlurHandler} onFocus={inputFocusHandler} className="input"></textarea>
+                                <textarea name='message' ref={enterMessage} onBlur={inputBlurHandler} onFocus={inputFocusHandler} className="input"></textarea>
                                 <label >Message</label>
                                 <span>Message</span>
                             </div>
