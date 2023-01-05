@@ -1,6 +1,69 @@
+import { useRef, useState } from 'react'
 import './Contact.css'
 
+let addClass = 'input__container';
+
+function ValidateEmail(mail) {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+        return (true)
+    }
+    alert("You have entered an invalid email address!")
+    return (false)
+}
+
+
 const Contact = () => {
+
+    const enterEmail = useRef(null)
+    const enterUsername = useRef(null)
+    const enterMessage = useRef(null)
+
+    const [isFocus, setIsFocus] = useState(false)
+    const [isValid, setIsValid] = useState(true)
+
+
+
+    const inputFocusHandler = () => {
+        setIsFocus(true)
+    }
+
+    const inputBlurHandler = () => {
+        const enteredEmail = enterEmail.current.value;
+        const enteredMessage = enterMessage.current.value
+        const enteredUsername = enterUsername.current.value
+
+        if (enteredEmail || enteredMessage || enteredUsername) {
+            setIsFocus(true)
+        } else {
+            setIsFocus(false)
+        }
+    }
+
+    if (isFocus) {
+        addClass = 'input__container focus'
+    } else {
+        addClass = 'input__container'
+    }
+    const formSubmissionHandler = (event) => {
+        event.preventDefault()
+
+        const enteredEmail = enterEmail.current.value;
+        const enteredMessage = enterMessage.current.value
+        const enteredUsername = enterUsername.current.value
+
+        ValidateEmail(enteredEmail);
+
+        if (enteredEmail && enteredMessage && enteredUsername) {
+            enterEmail.current.value = ''
+            enterMessage.current.value = ''
+            enterUsername.current.value = ''
+            setIsValid(true)
+        } else {
+            setIsValid(false)
+        }
+    }
+
+
     return (
         <div>
             <section className="contact section">
@@ -33,26 +96,27 @@ const Contact = () => {
                     </div>
 
                     <div className="contact-content">
-                        <form className="contact__form">
-                            <div className="input__container">
-                                <input type="text" className="input"></input>
-                                <label for="">Username</label>
+                        <form onSubmit={formSubmissionHandler} className="contact__form">
+                            <div className={`${addClass}`}>
+                                <input ref={enterUsername} onBlur={inputBlurHandler} onFocus={inputFocusHandler} type="text" className="input"></input>
+                                <label >Username</label>
                                 <span>Username</span>
                             </div>
 
-                            <div className="input__container">
-                                <input type="email" className="input"></input>
-                                <label for="">Email</label>
+                            <div className={`${addClass}`}>
+                                <input ref={enterEmail} onBlur={inputBlurHandler} onFocus={inputFocusHandler} type="email" className='input'></input>
+                                <label >Email</label>
                                 <span>Email</span>
                             </div>
 
-                            <div className="input__container textarea">
-                                <textarea rows="10" cols="30" className="input"></textarea>
-                                <label for="">Message</label>
+                            <div className={`${addClass}`}>
+                                <textarea ref={enterMessage} onBlur={inputBlurHandler} onFocus={inputFocusHandler} className="input"></textarea>
+                                <label >Message</label>
                                 <span>Message</span>
                             </div>
+                            {!isValid && <p>Please enter a valid set of inputs.</p>}
 
-                            <button type="submit" className="buttons">
+                            <button disabled={!isValid} type="submit" className="buttons">
                                 <i className="uil uil-navigator button__icon"></i>
                                 Send Message
                             </button>
