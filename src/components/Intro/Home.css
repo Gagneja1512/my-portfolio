@@ -1,5 +1,5 @@
 .home {
-    margin-left: -200px ;
+    margin-left: 200px ;
     background-size: cover;
     height: 100vh;
     background-position: center center;
@@ -139,4 +139,11 @@
 
 .button__icon {
     font-size: 1.25rem;
+}
+
+@media screen and (max-width : 1480px) {
+    .home__container {
+        margin-left: var(--mb-2-5);
+        margin-right: var(--mb-2-5);;
+    }
 }

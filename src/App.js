@@ -5,6 +5,7 @@ import { Redirect, Route, Switch } from 'react-router-dom'
 import Contact from "./components/Contact/Contact";
 import About from "./components/About/About";
 import Skills from "./components/Skills/Skills";
+import Projects from "./components/Projects/Projects.js";
 
 function App() {
   return (
@@ -25,6 +26,10 @@ function App() {
 
         <Route path="/skills" exact>
           <Skills></Skills>
+        </Route>
+
+        <Route path="/projects" exact>
+          <Projects></Projects>
         </Route>
 
         <Route path="/contact">

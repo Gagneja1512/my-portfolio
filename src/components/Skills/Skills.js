@@ -11,6 +11,8 @@ import Linux from "../../assets/linux.png";
 import Sass from "../../assets/sass.png";
 import Git from "../../assets/git.png";
 import Tyepscript from "../../assets/typescript.png";
+import MongoDB from "../../assets/mongo.png"
+import Tailwind from "../../assets/tailwind.png"
 
 const Skills = () => {
     return (
@@ -70,6 +72,16 @@ const Skills = () => {
                         <div className='skills__card-info'>
                             <img className='skills__image' src={Tyepscript} alt={HTML}></img>
                             <p className='skills__name'>Tyepscript</p>
+                        </div>
+
+                        <div className='skills__card-info'>
+                            <img className='skills__image' src={MongoDB} alt={HTML}></img>
+                            <p className='skills__name'>MongoDB</p>
+                        </div>
+
+                        <div className='skills__card-info'>
+                            <img className='skills__image' src={Tailwind} alt={HTML}></img>
+                            <p className='skills__name'>Tailwind</p>
                         </div>
                     </div>
                 </div>
