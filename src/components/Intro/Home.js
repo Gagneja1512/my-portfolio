@@ -10,13 +10,13 @@ const Home = () => {
                     <div className="home__social">
                         <span className="home__social-follow">Follow Me</span>
                         <div className="home__social-links">
-                            <a href="https://www.facebook.com/" className="home__social-link">
+                             {/* <a href="https://www.facebook.com/" className="home__social-link">
                                 <i className="uil uil-facebook-f"></i>
-                            </a>
-                            <a href="https://www.instagram.com/" className="home__social-link">
-                                <i className="uil uil-instagram"></i>
-                            </a>
-                            <a href="https://www.twitter.com/" className="home__social-link">
+                            </a> */}
+                            <a href="https://www.linkedin.com/in/aaditya-gagneja-b727a0203/" className="home__social-link">
+                                <i className="uil uil-linkedin"></i>
+                            </a> 
+                            <a href="https://twitter.com/Gagneja1512?t=3dwvH6y0dfoacOUohKjILA&s=09" className="home__social-link">
                                 <i className="uil uil-twitter"></i>
                             </a>
                         </div>
@@ -30,32 +30,32 @@ const Home = () => {
                     </div>
 
                     <div className="my__info">
-                        <div className="info__item">
-                            <i className="uil uil-facebook-messenger info__icon"></i>
+                        {/* <div className="info__item">
+                            <i className="uil uil-linkedin info__icon"></i>
 
                             <div>
-                                <h3 className="info__title">Messenger</h3>
+                                <h3 className="info__title">linkedin</h3>
                                 <span className="info__subtitle">user.user</span>
                             </div>
-                        </div>
+                        </div> */}
 
-                        <div className="info__item">
+                        {/* <div className="info__item">
                             <i className="uil uil-whatsapp info__icon"></i>
 
                             <div>
                                 <h3 className="info__title">Whatsapp</h3>
                                 <span className="info__subtitle">9876543210</span>
                             </div>
-                        </div>
+                        </div> */}
 
-                        <div className="info__item">
+                        {/* <div className="info__item">
                             <i className="uil uil-envelope-edit info__icon"></i>
 
                             <div>
                                 <h3 className="info__title">Email</h3>
-                                <span className="info__subtitle">email@gmail.com</span>
+                                <span className="info__subtitle">aadityagagneja1215@gmail.com</span>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </section>

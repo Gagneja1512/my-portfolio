@@ -27,7 +27,7 @@
     display: flex;
 }
 
-.home__social-follow::after {
+/* .home__social-follow::after {
     content: '';
     position: absolute;
     width: 1rem;
@@ -35,7 +35,7 @@
     background-color: var(--text-color);
     right: -45%;
     top: 50%;
-}
+} */
 
 .home__social-links {
     display: inline-flex;

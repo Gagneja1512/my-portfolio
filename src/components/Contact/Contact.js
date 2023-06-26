@@ -100,14 +100,14 @@ const Contact = () => {
                                 <i className="uil uil-github contact__card-icon"></i>
                                 <h3 className="contact__card-title">Github</h3>
                                 <span className="contact__card-data">Aaditya Gagneja</span>
-                                <span className="contact__button">Code<i className="uil uil-arrow-right contact__button-icon"></i></span>
+                                <a href='https://github.com/Gagneja1512'><span className="contact__button">Code<i className="uil uil-arrow-right contact__button-icon"></i></span></a>
                             </div>
 
                             <div className="contact__card">
                                 <i className="uil uil-twitter contact__card-icon"></i>
                                 <h3 className="contact__card-title">Twitter</h3>
-                                <span className="contact__card-data">Aaditya Gagneja</span>
-                                <span className="contact__button">Add me<i className="uil uil-arrow-right contact__button-icon"></i></span>
+                                <span className="contact__card-data">Gagneja1512</span>
+                                <a href='https://twitter.com/Gagneja1512?t=3dwvH6y0dfoacOUohKjILA&s=09'><span className="contact__button">Add me<i className="uil uil-arrow-right contact__button-icon"></i></span></a>
                             </div>
                         </div>
                     </div>
