@@ -13,6 +13,9 @@ import Git from "../../assets/git.png";
 import Tyepscript from "../../assets/typescript.png";
 import MongoDB from "../../assets/mongo.png"
 import Tailwind from "../../assets/tailwind.png"
+import FireBase from "../../assets/firebase.png"
+import Mysql from "../../assets/mysql.png"
+import Next from "../../assets/next.png"
 
 const Skills = () => {
     return (
@@ -37,10 +40,22 @@ const Skills = () => {
                             <img className='skills__image' src={JavaScript} alt={HTML}></img>
                             <p className='skills__name'>JavaScript</p>
                         </div>
+
+                        <div className='skills__card-info'>
+                            <img className='skills__image' src={Tyepscript} alt={HTML}></img>
+                            <p className='skills__name'>Tyepscript</p>
+                        </div>
+
                         <div className='skills__card-info'>
                             <img className='skills__image' src={ReactImg} alt={HTML}></img>
                             <p className='skills__name'>ReactJs</p>
                         </div>
+
+                        <div className='skills__card-info'>
+                            <img className='skills__image' src={Next} alt={HTML}></img>
+                            <p className='skills__name'>NextJs</p>
+                        </div>
+
                         <div className='skills__card-info'>
                             <img className='skills__image' src={Node} alt={HTML}></img>
                             <p className='skills__name'>NodeJs</p>
@@ -69,10 +84,6 @@ const Skills = () => {
                             <img className='skills__image' src={Git} alt={HTML}></img>
                             <p className='skills__name'>Git</p>
                         </div>
-                        <div className='skills__card-info'>
-                            <img className='skills__image' src={Tyepscript} alt={HTML}></img>
-                            <p className='skills__name'>Tyepscript</p>
-                        </div>
 
                         <div className='skills__card-info'>
                             <img className='skills__image' src={MongoDB} alt={HTML}></img>
@@ -82,6 +93,16 @@ const Skills = () => {
                         <div className='skills__card-info'>
                             <img className='skills__image' src={Tailwind} alt={HTML}></img>
                             <p className='skills__name'>Tailwind</p>
+                        </div>
+
+                        <div className='skills__card-info'>
+                            <img className='skills__image' src={FireBase} alt={HTML}></img>
+                            <p className='skills__name'>FireBase</p>
+                        </div>
+
+                        <div className='skills__card-info'>
+                            <img className='skills__image' src={Mysql} alt={HTML}></img>
+                            <p className='skills__name'>MySql</p>
                         </div>
                     </div>
                 </div>

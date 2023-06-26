@@ -1,5 +1,5 @@
 .work__container {
-    grid-template-columns: repeat(3 , 320px);
+    grid-template-columns: repeat(3 , 350px);
     gap: 2.8rem;
     justify-content: center;
     padding-top: 1rem;
