@@ -1,0 +1,14 @@
+public/index.html
+  h_d33d91b83ae0d1 29
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "30e7ae73368d2c622fca15ea9ed8586c4d91ef41",
+  "prompts": {},
+  "humans": {
+    "h_d33d91b83ae0d1": {
+      "author": "Aaditya Gagneja <aadityaarora1215@gmail.com>"
+    }
+  }
+}
