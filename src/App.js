@@ -23,7 +23,7 @@ const impact = [
   { value: "50K+", label: "REQUESTS / DAY", detail: "Insurance Service ownership" },
   { value: "<200ms", label: "P99 LATENCY", detail: "Across critical APIs" },
   { value: "60%", label: "LATENCY REDUCTION", detail: "Via concurrent orchestration" },
-  { value: "10+", label: "APIs MIGRATED", detail: "Rails to FastAPI" },
+  { value: "15+", label: "APIs MIGRATED", detail: "Rails to FastAPI" },
 ];
 
 const experience = [
@@ -93,6 +93,8 @@ function App() {
   const [light, setLight] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [active, setActive] = useState("profile");
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [paletteOpen, setPaletteOpen] = useState(false);
 
   useEffect(() => {
     const sections = [...document.querySelectorAll("main section[id]")];
@@ -121,9 +123,37 @@ function App() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const updateProgress = () => {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(scrollable > 0 ? Math.min(100, (window.scrollY / scrollable) * 100) : 0);
+    };
+    const handleKeyboard = (event) => {
+      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
+        event.preventDefault();
+        setPaletteOpen((current) => !current);
+      }
+      if (event.key === "Escape") setPaletteOpen(false);
+    };
+
+    updateProgress();
+    window.addEventListener("scroll", updateProgress, { passive: true });
+    window.addEventListener("resize", updateProgress);
+    window.addEventListener("keydown", handleKeyboard);
+    return () => {
+      window.removeEventListener("scroll", updateProgress);
+      window.removeEventListener("resize", updateProgress);
+      window.removeEventListener("keydown", handleKeyboard);
+    };
+  }, []);
+
   const moveSpotlight = (event) => {
     event.currentTarget.style.setProperty("--pointer-x", `${event.clientX}px`);
     event.currentTarget.style.setProperty("--pointer-y", `${event.clientY}px`);
+  };
+
+  const setCursorState = (event, state, enabled = true) => {
+    event.currentTarget.classList.toggle(`cursor-${state}`, enabled);
   };
 
   const sendMessage = (event) => {
@@ -146,9 +176,37 @@ function App() {
     "contact",
   ];
 
+  const navigateTo = (section) => {
+    document.getElementById(section)?.scrollIntoView({ behavior: "smooth" });
+    setPaletteOpen(false);
+  };
+
   return (
-    <div className={light ? "app light" : "app"} onPointerMove={moveSpotlight}>
+    <div
+      className={light ? "app light" : "app"}
+      onPointerMove={moveSpotlight}
+      onPointerEnter={(event) => setCursorState(event, "visible")}
+      onPointerLeave={(event) => {
+        setCursorState(event, "visible", false);
+        setCursorState(event, "pressed", false);
+      }}
+      onPointerDown={(event) => setCursorState(event, "pressed")}
+      onPointerUp={(event) => setCursorState(event, "pressed", false)}
+      onPointerOver={(event) =>
+        setCursorState(
+          event,
+          "interactive",
+          Boolean(event.target.closest("a, button, input, textarea"))
+        )
+      }
+    >
+      <div className="code-cursor" aria-hidden="true">
+        <i className="cursor-dot" />
+        <i className="cursor-reticle" />
+        <span>PTR</span>
+      </div>
       <header className="topbar">
+        <span className="scroll-progress" style={{ "--scroll-progress": `${scrollProgress}%` }} />
         <div className="nav-wrap">
           <a className="brand" href="#profile">
             AADITYA GAGNEJA
@@ -192,6 +250,14 @@ function App() {
         </div>
       </header>
 
+      <aside className="system-rail" aria-hidden="true">
+        <span>SYS.PROGRESS</span>
+        <div>
+          <i style={{ height: `${scrollProgress}%` }} />
+        </div>
+        <strong>{String(Math.round(scrollProgress)).padStart(3, "0")}%</strong>
+      </aside>
+
       <main>
         <section className="hero" id="profile">
           <div className="hero-copy hero-enter">
@@ -228,6 +294,31 @@ function App() {
               <small>{metric.detail}</small>
             </article>
           ))}
+        </section>
+
+        <section className="availability reveal reveal-up" data-reveal>
+          <div className="availability-status">
+            <i />
+            <div>
+              <span>PROFESSIONAL_STATUS : </span>
+              <strong>Open to opportunities</strong>
+            </div>
+          </div>
+          <div className="availability-detail">
+            <span>FOCUS</span>
+            <strong>Distributed Systems · Platform Engineering</strong>
+          </div>
+          <div className="availability-detail">
+            <span>PREFERRED ROLES</span>
+            <strong>Backend Engineer · Platform Engineer</strong>
+          </div>
+          <div className="availability-detail">
+            <span>LOCATION</span>
+            <strong>Chandigarh, India</strong>
+          </div>
+          <a href="mailto:aadityaarora1215@gmail.com?subject=Backend%20opportunity">
+            DISCUSS A ROLE ↗
+          </a>
         </section>
 
         <section className="section about-section" aria-labelledby="about-title">
@@ -520,6 +611,72 @@ function App() {
           </form>
         </section>
       </main>
+
+      <button
+        className="command-trigger"
+        type="button"
+        onClick={() => setPaletteOpen(true)}
+        aria-label="Open command palette"
+        aria-haspopup="dialog"
+      >
+        <i />
+        <span>QUICK_NAV</span>
+        <kbd>⌘ K</kbd>
+      </button>
+
+      {paletteOpen && (
+        <div
+          className="command-overlay"
+          role="presentation"
+          onMouseDown={() => setPaletteOpen(false)}
+        >
+          <section
+            className="command-palette"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="command-title"
+            onMouseDown={(event) => event.stopPropagation()}
+          >
+            <div className="command-titlebar">
+              <div>
+                <i />
+                <span id="command-title">portfolio.command</span>
+              </div>
+              <kbd>ESC</kbd>
+            </div>
+            <div className="command-input">
+              <span>›</span>
+              <p>Where would you like to go?</p>
+              <b>READY</b>
+            </div>
+            <div className="command-list">
+              {[
+                ["profile", "About", "01"],
+                ["skills", "Technical stack", "02"],
+                ["building", "Currently exploring", "03"],
+                ["experience", "Experience", "04"],
+                ["projects", "Projects", "05"],
+                ["achievements", "Achievements", "06"],
+                ["education", "Education", "07"],
+                ["contact", "Contact", "08"],
+              ].map(([section, label, shortcut]) => (
+                <button type="button" onClick={() => navigateTo(section)} key={section}>
+                  <span>{label}</span>
+                  <kbd>{shortcut}</kbd>
+                </button>
+              ))}
+            </div>
+            <div className="command-actions">
+              <button type="button" onClick={() => setLight((current) => !current)}>
+                {light ? "Switch to dark mode" : "Switch to light mode"}
+              </button>
+              <a href="/Aaditya_Gagneja_Resume.pdf" download="Aaditya_Gagneja_Resume.pdf">
+                Download résumé ↓
+              </a>
+            </div>
+          </section>
+        </div>
+      )}
 
       <footer>
         <div>
