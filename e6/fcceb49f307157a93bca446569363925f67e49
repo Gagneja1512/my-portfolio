@@ -1,0 +1,58 @@
+build/static/css/main.9d447fe6.css
+  s_4c7eeca4cbd0ac::t_d362205eb6f756 1-2
+build/static/js/main.4fb985ae.js
+  s_4c7eeca4cbd0ac::t_d362205eb6f756 1-3
+build/static/js/main.4fb985ae.js.LICENSE.txt
+  s_4c7eeca4cbd0ac::t_d362205eb6f756 1-39
+src/App.js
+  h_d33d91b83ae0d1 87,480
+  s_4c7eeca4cbd0ac::t_fc35f94bf0d5e9 107-128,150,198,214-216,235-237,239-245,254-256,259-264,282-292,294-300,340-342,344,349,354,380,399
+  s_4c7eeca4cbd0ac::t_8b16d8bc805d79 12-26,34-37,43-48,54-65,139-147,217-231,270-274,346-347,351-352,355-357,362-377,438
+  s_4c7eeca4cbd0ac::t_b2bd980643a124 78,88
+  s_4c7eeca4cbd0ac::t_d362205eb6f756 437
+  s_4c7eeca4cbd0ac::t_502c247900a23f 378
+  s_4c7eeca4cbd0ac::t_0d430f1fa3a454 439
+build/asset-manifest.json
+  s_5894acd0fab446::t_695a84423014f7 1-2,5,8-9,12-13
+  s_4c7eeca4cbd0ac::t_d362205eb6f756 3-4,6-7,10-11
+src/App.css
+  s_4c7eeca4cbd0ac::t_b2bd980643a124 593-598
+  s_4c7eeca4cbd0ac::t_d362205eb6f756 370-372,378-380,386-388,712-714,736-738,743-745,750-752,763-765,770-772
+  s_4c7eeca4cbd0ac::t_fc35f94bf0d5e9 36-37,39-41,51-62,102-105,125-128,134,144-147,152,164-167,184-189,203,246-255,270,274,278,389-412,448-450,456-457,486-487,508-514,582-592,599-606,611-614,691-697,774,799-801,805-811,836-839,844,854-857,862-892,1091,1101-1116
+  s_4c7eeca4cbd0ac::t_8b16d8bc805d79 109,346-369,373-377,381-385,445,492,540-542,545-567,708-711,715-735,739-742,746-749,753-762,766-769,773,975-980,992-998,1047-1052,1080-1090
+build/index.html
+  s_4c7eeca4cbd0ac::t_d362205eb6f756 1
+build/static/css/main.9d447fe6.css.map
+  s_4c7eeca4cbd0ac::t_b371d9e1dba8a3 1
+build/static/js/main.4fb985ae.js.map
+  s_4c7eeca4cbd0ac::t_1ceaf397f6e109 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "e6fcceb49f307157a93bca446569363925f67e49",
+  "prompts": {},
+  "humans": {
+    "h_d33d91b83ae0d1": {
+      "author": "Aaditya Gagneja <aadityaarora1215@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_4c7eeca4cbd0ac": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019fb34a-23ad-76c1-ad82-b69ae9e36254",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Aaditya Gagneja <aadityaarora1215@gmail.com>"
+    },
+    "s_5894acd0fab446": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019faf07-abb6-7950-820a-6582575895af",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Aaditya Gagneja <aadityaarora1215@gmail.com>"
+    }
+  }
+}
