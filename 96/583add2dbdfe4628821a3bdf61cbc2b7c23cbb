@@ -1,0 +1,62 @@
+src/styles/responsive.css
+  s_4c7eeca4cbd0ac::t_57d4ae80f7c524 1-254
+build/index.html
+  s_4c7eeca4cbd0ac::t_fd69b9703fd0ed 1
+src/styles/sections.css
+  s_4c7eeca4cbd0ac::t_57d4ae80f7c524 1-766
+build/static/js/main.2b9e33e3.js
+  s_4c7eeca4cbd0ac::t_fd69b9703fd0ed 1-3
+src/App.js
+  s_4c7eeca4cbd0ac::t_f378764743adcc 182
+  s_4c7eeca4cbd0ac::t_a61279abcc3688 2-3
+  s_4c7eeca4cbd0ac::t_4016cb75fdfff8 1,4
+  s_4c7eeca4cbd0ac::t_9883e0e291d718 5
+build/asset-manifest.json
+  s_4c7eeca4cbd0ac::t_fd69b9703fd0ed 3-4,6-7,10-11
+src/components/SectionHead.js
+  s_4c7eeca4cbd0ac::t_7acd9d59d17ec1 1-10
+src/components/Terminal.js
+  s_4c7eeca4cbd0ac::t_1cd1bce7f17419 3-199
+  s_4c7eeca4cbd0ac::t_4016cb75fdfff8 1-2,200
+src/components/RotatingRole.js
+  s_4c7eeca4cbd0ac::t_78eec6d56c076d 1-74
+src/styles/foundation.css
+  s_4c7eeca4cbd0ac::t_57d4ae80f7c524 1-297
+src/styles/hero.css
+  s_4c7eeca4cbd0ac::t_57d4ae80f7c524 1-254
+src/styles/widgets.css
+  s_4c7eeca4cbd0ac::t_57d4ae80f7c524 1-262
+build/static/css/main.e795e2c2.css
+  s_4c7eeca4cbd0ac::t_fd69b9703fd0ed 1-2
+src/App.css
+  s_4c7eeca4cbd0ac::t_a58cbed808785c 1-5
+build/static/js/main.2b9e33e3.js.LICENSE.txt
+  s_4c7eeca4cbd0ac::t_fd69b9703fd0ed 1-39
+src/data/portfolio.js
+  s_4c7eeca4cbd0ac::t_7acd9d59d17ec1 1-87
+build/static/css/main.e795e2c2.css.map
+  s_4c7eeca4cbd0ac::t_d16a9f12891dec 1
+build/static/js/main.2b9e33e3.js.map
+  s_4c7eeca4cbd0ac::t_f7a40764b508d8 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "96583add2dbdfe4628821a3bdf61cbc2b7c23cbb",
+  "prompts": {},
+  "humans": {
+    "h_d33d91b83ae0d1": {
+      "author": "Aaditya Gagneja <aadityaarora1215@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_4c7eeca4cbd0ac": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019fb34a-23ad-76c1-ad82-b69ae9e36254",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Aaditya Gagneja <aadityaarora1215@gmail.com>"
+    }
+  }
+}
