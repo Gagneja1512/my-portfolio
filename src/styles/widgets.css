@@ -1,0 +1,262 @@
+@keyframes hero-copy-in {
+  from {
+    opacity: 0;
+    transform: translate3d(-60px, 20px, 0);
+    filter: blur(8px);
+  }
+}
+@keyframes hero-terminal-in {
+  from {
+    opacity: 0;
+    transform: translate3d(60px, 20px, 0);
+    filter: blur(8px);
+  }
+}
+@keyframes status-pulse {
+  50% {
+    box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 7%, transparent);
+  }
+}
+@keyframes terminal-light {
+  50% {
+    opacity: 0.45;
+    transform: scale(0.78);
+  }
+}
+@keyframes timeline-grow {
+  from {
+    transform: scaleY(0);
+  }
+}
+footer {
+  margin-top: 48px;
+  border-top: 1px solid var(--line);
+  background: var(--low);
+}
+footer > div {
+  padding: 22px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font: 13px JetBrains Mono;
+  color: var(--muted);
+}
+footer b {
+  color: var(--text);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+}
+footer nav {
+  display: flex;
+  gap: 24px;
+}
+footer a:hover {
+  text-decoration: underline;
+}
+.command-trigger {
+  position: fixed;
+  z-index: 25;
+  right: 22px;
+  bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--low) 90%, transparent);
+  color: var(--muted);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.24);
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+  font:
+    9px JetBrains Mono,
+    monospace;
+  letter-spacing: 0.1em;
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+.command-trigger:hover {
+  color: var(--text);
+  border-color: var(--outline);
+  transform: translateY(-3px);
+}
+.command-trigger i,
+.command-titlebar i {
+  width: 7px;
+  height: 7px;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 12%, transparent);
+  animation: command-status 2s ease-in-out infinite;
+}
+.command-trigger kbd,
+.command-titlebar kbd,
+.command-list kbd {
+  padding: 3px 5px;
+  border: 1px solid var(--line);
+  background: var(--container);
+  color: var(--outline);
+  font: inherit;
+}
+.command-overlay {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  padding: 15vh 20px 20px;
+  background: rgba(0, 0, 0, 0.58);
+  backdrop-filter: blur(7px);
+  animation: overlay-in 0.22s ease both;
+}
+.command-palette {
+  width: min(560px, 100%);
+  max-height: 70vh;
+  margin: auto;
+  overflow: auto;
+  border: 1px solid var(--outline);
+  background: var(--bg);
+  color: var(--text);
+  box-shadow: 0 35px 100px rgba(0, 0, 0, 0.55);
+  animation: palette-in 0.42s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.command-titlebar,
+.command-input,
+.command-actions {
+  display: flex;
+  align-items: center;
+}
+.command-titlebar {
+  justify-content: space-between;
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--line);
+  background: var(--high);
+  color: var(--muted);
+  font:
+    10px JetBrains Mono,
+    monospace;
+}
+.command-titlebar div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.command-input {
+  gap: 12px;
+  padding: 18px;
+  border-bottom: 1px solid var(--line);
+  font:
+    12px JetBrains Mono,
+    monospace;
+}
+.command-input > span {
+  color: var(--accent);
+  font-size: 20px;
+  animation: prompt-blink 1s steps(1) infinite;
+}
+.command-input p {
+  flex: 1;
+  margin: 0;
+  color: var(--muted);
+}
+.command-input b {
+  color: var(--accent);
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+}
+.command-list {
+  padding: 8px;
+}
+.command-list button {
+  width: 100%;
+  padding: 12px;
+  border: 0;
+  border-left: 2px solid transparent;
+  display: flex;
+  justify-content: space-between;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font:
+    12px JetBrains Mono,
+    monospace;
+  text-align: left;
+}
+.command-list button:hover,
+.command-list button:focus-visible {
+  border-left-color: var(--accent);
+  background: var(--low);
+  color: var(--text);
+  outline: 0;
+}
+.command-actions {
+  gap: 1px;
+  border-top: 1px solid var(--line);
+  background: var(--line);
+}
+.command-actions button,
+.command-actions a {
+  flex: 1;
+  padding: 13px;
+  border: 0;
+  background: var(--low);
+  color: var(--muted);
+  cursor: pointer;
+  font:
+    10px JetBrains Mono,
+    monospace;
+  text-align: center;
+}
+.command-actions button:hover,
+.command-actions a:hover {
+  background: var(--container);
+  color: var(--text);
+}
+@keyframes section-scan {
+  to {
+    transform: translateX(105%);
+  }
+}
+@keyframes command-status {
+  50% {
+    opacity: 0.45;
+    box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 5%, transparent);
+  }
+}
+@keyframes overlay-in {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes palette-in {
+  from {
+    opacity: 0;
+    transform: translateY(-24px) scale(0.97);
+  }
+}
+@keyframes prompt-blink {
+  50% {
+    opacity: 0;
+  }
+}
+@keyframes availability-pulse {
+  50% {
+    opacity: 0.5;
+    box-shadow: 0 0 0 8px rgba(152, 195, 121, 0);
+  }
+}
+@keyframes role-caret {
+  50% {
+    opacity: 0;
+  }
+}
+@keyframes role-window-scan {
+  0%,
+  62% {
+    transform: translateX(-110%);
+  }
+  88%,
+  100% {
+    transform: translateX(110%);
+  }
+}

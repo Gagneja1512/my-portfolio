@@ -1,0 +1,254 @@
+@media (max-width: 1180px) {
+  .system-rail {
+    display: none;
+  }
+}
+@media (max-width: 850px) {
+  .brand {
+    font-size: 19px;
+  }
+  .menu-button {
+    display: block;
+    margin-left: auto;
+  }
+  .nav {
+    display: none;
+    position: absolute;
+    top: 68px;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 16px 24px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    flex-direction: column;
+    gap: 0;
+  }
+  .nav.open {
+    display: flex;
+  }
+  .nav a {
+    padding: 14px 0;
+  }
+  .nav-actions .resume-small {
+    display: none;
+  }
+  .hero {
+    min-height: 0;
+    padding: 64px 0;
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .hero-copy {
+    background-image:
+      linear-gradient(var(--container) 1px, transparent 1px),
+      linear-gradient(90deg, var(--container) 1px, transparent 1px);
+    background-size: 20px 20px;
+    padding: 24px;
+    margin: -24px;
+  }
+  .hero h1 {
+    font-size: 38px;
+  }
+  .rotating-role {
+    width: min(100%, 520px);
+  }
+  .intro {
+    font-size: 22px;
+  }
+  .terminal {
+    margin: 20px 0 0;
+  }
+  .section {
+    padding: 64px 0;
+  }
+  .about-layout {
+    grid-template-columns: 1fr;
+    gap: 42px;
+  }
+  .impact-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .skill-grid article {
+    grid-column: span 6;
+  }
+  .building-grid {
+    grid-template-columns: 1fr;
+  }
+  .building-grid article {
+    min-height: 220px;
+  }
+  .timeline::before {
+    left: 5px;
+  }
+  .timeline article,
+  .timeline article.right {
+    width: 100%;
+    margin-left: 0;
+    padding: 0 0 42px 32px;
+    text-align: left;
+    min-height: 0;
+  }
+  .timeline .left .experience-details li {
+    padding: 0 0 0 17px;
+  }
+  .timeline .left .experience-details li::before {
+    right: auto;
+    left: 0;
+  }
+  .timeline .left .node,
+  .timeline .right .node {
+    left: 0;
+    right: auto;
+  }
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+  .achievement-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .contact {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  footer > div {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}
+@media (max-width: 560px) {
+  .availability {
+    grid-template-columns: 1fr;
+    margin-top: 18px;
+  }
+  .command-trigger span {
+    display: none;
+  }
+  .command-trigger {
+    right: 14px;
+    bottom: 14px;
+  }
+  .command-overlay {
+    padding-top: 10vh;
+  }
+  .nav-wrap,
+  main {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .brand {
+    font-size: 17px;
+  }
+  .theme-button {
+    font-size: 22px;
+  }
+  .hero {
+    padding: 52px 8px;
+  }
+  .hero h1 {
+    font-size: 34px;
+  }
+  .rotating-role {
+    margin-top: -4px;
+  }
+  .role-window-body {
+    min-height: 76px;
+    padding: 13px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 5px 8px;
+  }
+  .role-window-body > span {
+    width: 100%;
+  }
+  .role-window-body strong {
+    max-width: calc(100% - 18px);
+    font-size: 14px;
+  }
+  .intro {
+    font-size: 20px;
+  }
+  .facts {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 36px;
+  }
+  .impact-strip {
+    grid-template-columns: 1fr;
+  }
+  .impact-strip article {
+    padding: 24px;
+  }
+  .terminal-body {
+    padding: 18px;
+    font-size: 12px;
+  }
+  .section-head {
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 30px;
+  }
+  .section-head h2 {
+    font-size: 20px;
+  }
+  .about-copy h2 {
+    font-size: 27px;
+  }
+  .skill-grid {
+    display: block;
+  }
+  .skill-grid article {
+    border-bottom: 1px solid var(--line);
+  }
+  .skill-grid article:last-child {
+    border: 0;
+  }
+  .project-grid article {
+    min-height: 250px;
+  }
+  .achievement-grid h3 {
+    font-size: 21px;
+  }
+  .education-card {
+    padding: 24px;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .education-score {
+    min-width: 0;
+    width: 100%;
+    padding: 20px 0 0;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+  footer nav {
+    flex-wrap: wrap;
+    gap: 12px 20px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal {
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+  .app::before {
+    display: none;
+  }
+  .code-cursor {
+    display: none;
+  }
+}
