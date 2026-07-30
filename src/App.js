@@ -9,6 +9,21 @@ const skills = [
     title: "Tools & Infra",
     values: "AWS (S3/SQS/SNS/EC2), Kafka, Git, Linux, GitHub, Bitbucket, Kloudfuse, Sentry",
   },
+  {
+    title: "Backend Concepts",
+    values: "REST, Event-Driven Architecture, Async Processing, Indexing, Caching, Microservices",
+  },
+  {
+    title: "Fundamentals",
+    values: "DBMS, Operating Systems, DSA, Object-Oriented Programming, Computer Networks",
+  },
+];
+
+const impact = [
+  { value: "50K+", label: "REQUESTS / DAY", detail: "Insurance Service ownership" },
+  { value: "<200ms", label: "P99 LATENCY", detail: "Across critical APIs" },
+  { value: "60%", label: "LATENCY REDUCTION", detail: "Via concurrent orchestration" },
+  { value: "10+", label: "APIs MIGRATED", detail: "Rails to FastAPI" },
 ];
 
 const experience = [
@@ -16,21 +31,38 @@ const experience = [
     date: "APR 2026 — PRESENT",
     role: "SDE 2",
     company: "Tata 1mg",
-    detail:
-      "Led migration of Insurance services from RoR to FastAPI. Architecting high-throughput backend systems.",
+    highlights: [
+      "Led migration of Insurance Category and Upsell services—10+ APIs, 2+ cron jobs, and AWS integrations—from Ruby on Rails to FastAPI.",
+      "Guided an intern through implementation, code reviews, and rollout support, delivering a zero-downtime production transition.",
+    ],
   },
   {
     date: "JUL 2024 — APR 2026",
     role: "SDE 1",
     company: "Tata 1mg",
-    detail:
-      "Owned Insurance Service (50K+ req/day), engineered asynchronous invoice workflows, and reduced p99 latency by 60%.",
+    highlights: [
+      "Owned the Insurance Service end-to-end, serving 50K+ requests/day with sub-200ms p99 latency and 3+ third-party integrations.",
+      "Built asynchronous PDF invoice and S3 upload workflows, removing blocking I/O from synchronous request paths.",
+      "Reduced p99 latency by 60% using concurrent WhatsApp, SMS, and email orchestration.",
+      "Owned critical user journeys and resolved high-priority production incidents within 12 hours.",
+    ],
   },
   {
     date: "JAN 2021 — MAY 2024",
     role: "Coordinator",
     company: "App Team NITH",
-    detail: "Managed development teams and technical events at NIT Hamirpur.",
+    highlights: [
+      "Architected Node.js APIs for a college fest management platform.",
+      "Mentored junior batches through hands-on Git and GitHub workshops.",
+    ],
+  },
+  {
+    date: "JAN 2023 — MAR 2023",
+    role: "Problem Setter",
+    company: "Coding Shuttle · Remote",
+    highlights: [
+      "Designed and curated 80+ coding challenges to strengthen platform users' problem-solving skills.",
+    ],
   },
 ];
 
@@ -43,7 +75,7 @@ const projects = [
       "Revamped corporate membership workflows to support dual association with standard and SSO corporates while preserving existing user journeys and dashboard routing.",
     ],
     tags: ["FASTAPI", "PYTHON", "POSTGRESQL", "SSO"],
-    liveUrl: 'https://www.1mg.com/information/maharaja-air-india',
+    liveUrl: "https://www.1mg.com/information/maharaja-air-india",
   },
   {
     icon: "⌘",
@@ -52,8 +84,8 @@ const projects = [
       "Designed and developed a responsive personal portfolio showcasing projects, technical skills, and professional experience.",
       "Built with React.js and JavaScript, including an EmailJS-powered communication workflow for direct visitor enquiries.",
     ],
-    tags: ["REACT", "JAVASCRIPT", "EMAILJS"],
-    liveUrl: null,
+    tags: ["REACT", "JAVASCRIPT"],
+    liveUrl: "https://aadityagagneja.vercel.app/",
   },
 ];
 
@@ -72,6 +104,28 @@ function App() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const animatedElements = [...document.querySelectorAll("[data-reveal]")];
+    const observer = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        }),
+      { threshold: 0.14, rootMargin: "0px 0px -7%" }
+    );
+
+    animatedElements.forEach((element) => observer.observe(element));
+    return () => observer.disconnect();
+  }, []);
+
+  const moveSpotlight = (event) => {
+    event.currentTarget.style.setProperty("--pointer-x", `${event.clientX}px`);
+    event.currentTarget.style.setProperty("--pointer-y", `${event.clientY}px`);
+  };
+
   const sendMessage = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -82,10 +136,18 @@ function App() {
     window.location.href = `mailto:aadityaarora1215@gmail.com?subject=${subject}&body=${body}`;
   };
 
-  const nav = ["profile", "skills", "experience", "projects", "achievements", "contact"];
+  const nav = [
+    "profile",
+    "skills",
+    "experience",
+    "projects",
+    "achievements",
+    "education",
+    "contact",
+  ];
 
   return (
-    <div className={light ? "app light" : "app"}>
+    <div className={light ? "app light" : "app"} onPointerMove={moveSpotlight}>
       <header className="topbar">
         <div className="nav-wrap">
           <a className="brand" href="#profile">
@@ -114,9 +176,8 @@ function App() {
           <div className="nav-actions">
             <a
               className="resume-small"
-              href="https://drive.google.com/file/d/1dxEVFh2FnqVREfScM9iKmNbUoPkOV3g3/view?usp=drive_link"
-              target="_blank"
-              rel="noreferrer"
+              href="/Aaditya_Gagneja_Resume.pdf"
+              download="Aaditya_Gagneja_Resume.pdf"
             >
               Resume
             </a>
@@ -133,7 +194,7 @@ function App() {
 
       <main>
         <section className="hero" id="profile">
-          <div className="hero-copy">
+          <div className="hero-copy hero-enter">
             <span className="status">[SYSTEM_STATUS: ACTIVE]</span>
             <h1>AADITYA GAGNEJA</h1>
             <p className="intro">
@@ -149,14 +210,87 @@ function App() {
               </div>
             </div>
           </div>
-          <Terminal />
+          <div className="hero-terminal">
+            <Terminal />
+          </div>
+        </section>
+
+        <section className="impact-strip" aria-label="Engineering impact">
+          {impact.map((metric, index) => (
+            <article
+              className="reveal reveal-up"
+              data-reveal
+              style={{ "--reveal-delay": `${index * 80}ms` }}
+              key={metric.label}
+            >
+              <strong>{metric.value}</strong>
+              <span>{metric.label}</span>
+              <small>{metric.detail}</small>
+            </article>
+          ))}
+        </section>
+
+        <section className="section about-section" aria-labelledby="about-title">
+          <div className="reveal reveal-left" data-reveal>
+            <SectionHead number="00" title="ABOUT_ME" aside="[ENGINEERING_WITH_INTENT]" />
+          </div>
+          <div className="about-layout">
+            <div className="about-copy reveal reveal-left" data-reveal>
+              <h2 id="about-title">
+                I build backend systems that stay fast when the stakes get high.
+              </h2>
+              <p>
+                I’m a Software Development Engineer at Tata 1mg, focused on backend architecture,
+                distributed systems, and high-throughput APIs. My work spans service ownership,
+                zero-downtime migrations, asynchronous workflows, caching, partner integrations, and
+                production reliability.
+              </p>
+              <p>
+                I enjoy turning complex business workflows into simple, resilient systems. I value
+                measurable performance, thoughtful trade-offs, clear code reviews, and engineering
+                decisions that make systems easier for the next person to operate and extend.
+              </p>
+            </div>
+            <div className="principles reveal reveal-right" data-reveal>
+              <article>
+                <span>01</span>
+                <div>
+                  <h3>OWN THE OUTCOME</h3>
+                  <p>From architecture and implementation to rollout and incident response.</p>
+                </div>
+              </article>
+              <article>
+                <span>02</span>
+                <div>
+                  <h3>DESIGN FOR FAILURE</h3>
+                  <p>Build observable, resilient workflows around real production constraints.</p>
+                </div>
+              </article>
+              <article>
+                <span>03</span>
+                <div>
+                  <h3>MEASURE THE IMPACT</h3>
+                  <p>
+                    Optimize for latency, reliability, and outcomes—not complexity for its own sake.
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
         </section>
 
         <section className="section skills-section" id="skills">
-          <SectionHead number="01" title="TECH_STACK" aside="[CONSTANT_EVOLUTION]" />
+          <div className="reveal reveal-left" data-reveal>
+            <SectionHead number="01" title="TECH_STACK" aside="[CONSTANT_EVOLUTION]" />
+          </div>
           <div className="skill-grid">
-            {skills.map((skill) => (
-              <article key={skill.title}>
+            {skills.map((skill, index) => (
+              <article
+                className="reveal reveal-up"
+                data-reveal
+                style={{ "--reveal-delay": `${index * 90}ms` }}
+                key={skill.title}
+              >
                 <h3>{skill.title}</h3>
                 <p>{skill.values}</p>
               </article>
@@ -164,17 +298,64 @@ function App() {
           </div>
         </section>
 
+        <section className="section building-section" id="building">
+          <div className="reveal reveal-right" data-reveal>
+            <SectionHead number="02" title="CURRENTLY_EXPLORING" aside="[LEARNING_IN_PUBLIC]" />
+          </div>
+          <div className="building-grid">
+            <article className="reveal reveal-left" data-reveal>
+              <span>01 / INTELLIGENCE</span>
+              <h3>Agentic AI</h3>
+              <p>
+                Exploring autonomous agent workflows, tool use, orchestration, memory, and reliable
+                AI-assisted backend systems.
+              </p>
+            </article>
+            <article className="reveal reveal-up" data-reveal style={{ "--reveal-delay": "90ms" }}>
+              <span>02 / INFRASTRUCTURE</span>
+              <h3>Docker</h3>
+              <p>
+                Deepening my understanding of reproducible environments, image optimization,
+                container networking, and deployment workflows.
+              </p>
+            </article>
+            <article
+              className="reveal reveal-right"
+              data-reveal
+              style={{ "--reveal-delay": "180ms" }}
+            >
+              <span>03 / LANGUAGE</span>
+              <h3>Go</h3>
+              <p>
+                Learning Go for concurrent, efficient network services and simple, maintainable
+                production tooling.
+              </p>
+            </article>
+          </div>
+        </section>
+
         <section className="section" id="experience">
-          <SectionHead number="02" title="EXPERIENCE" />
+          <div className="reveal reveal-right" data-reveal>
+            <SectionHead number="03" title="EXPERIENCE" />
+          </div>
           <div className="timeline">
             {experience.map((job, index) => (
-              <article className={index % 2 ? "right" : "left"} key={job.date}>
+              <article
+                className={`${index % 2 ? "right reveal-right" : "left reveal-left"} reveal`}
+                data-reveal
+                style={{ "--reveal-delay": `${index * 100}ms` }}
+                key={job.date}
+              >
                 <span className="node"></span>
                 <div>
                   <time>{job.date}</time>
                   <h3>{job.role}</h3>
                   <small>{job.company}</small>
-                  <p>{job.detail}</p>
+                  <ul className="experience-details">
+                    {job.highlights.map((highlight) => (
+                      <li key={highlight}>{highlight}</li>
+                    ))}
+                  </ul>
                 </div>
               </article>
             ))}
@@ -182,18 +363,25 @@ function App() {
         </section>
 
         <section className="section" id="projects">
-          <SectionHead
-            number="03"
-            title="PROJECTS"
-            aside={
-              <a href="https://github.com/Gagneja1512" target="_blank" rel="noreferrer">
-                VIEW_ALL_REPOS →
-              </a>
-            }
-          />
+          <div className="reveal reveal-left" data-reveal>
+            <SectionHead
+              number="04"
+              title="PROJECTS"
+              aside={
+                <a href="https://github.com/Gagneja1512" target="_blank" rel="noreferrer">
+                  VIEW_ALL_REPOS →
+                </a>
+              }
+            />
+          </div>
           <div className="project-grid">
-            {projects.map((project) => (
-              <article key={project.title}>
+            {projects.map((project, index) => (
+              <article
+                className={`reveal ${index % 2 ? "reveal-right" : "reveal-left"}`}
+                data-reveal
+                style={{ "--reveal-delay": `${index * 120}ms` }}
+                key={project.title}
+              >
                 <span className="project-icon">{project.icon}</span>
                 <h3>{project.title}</h3>
                 <ul className="project-details">
@@ -233,25 +421,47 @@ function App() {
         </section>
 
         <section className="section" id="achievements">
-          <SectionHead number="04" title="ACHIEVEMENTS" />
+          <div className="reveal reveal-right" data-reveal>
+            <SectionHead number="05" title="ACHIEVEMENTS" />
+          </div>
           <div className="achievement-grid">
-            <article>
+            <article className="reveal reveal-up" data-reveal style={{ "--reveal-delay": "0ms" }}>
               <h3>CodeChef 4★</h3>
-              <p>Rating: 1828</p>
+              <p>Max rating: 1828</p>
+              <small>Ranked 92 / 2,200+ in Starters 46</small>
             </article>
-            <article>
+            <article className="reveal reveal-up" data-reveal style={{ "--reveal-delay": "90ms" }}>
               <h3>Codeforces Specialist</h3>
-              <p>Rating: 1418</p>
+              <p>Max rating: 1418</p>
+              <small>Ranked 1,486 / 12,000+ in Round 820</small>
             </article>
-            <article>
-              <h3>9.01 GPA</h3>
-              <p>NIT Hamirpur B.Tech</p>
+            <article className="reveal reveal-up" data-reveal style={{ "--reveal-delay": "180ms" }}>
+              <h3>80+ Problems</h3>
+              <p>Authored for Coding Shuttle</p>
+              <small>Algorithmic challenges for platform learners</small>
             </article>
           </div>
         </section>
 
+        <section className="section education" id="education">
+          <div className="reveal reveal-left" data-reveal>
+            <SectionHead number="06" title="EDUCATION" aside="[FOUNDATION]" />
+          </div>
+          <article className="education-card reveal reveal-right" data-reveal>
+            <div>
+              <span className="education-date">DEC 2020 — JUN 2024</span>
+              <h3>National Institute of Technology Hamirpur</h3>
+              <p>Bachelor of Technology · Computer Science and Engineering</p>
+            </div>
+            <div className="education-score">
+              <strong>9.01</strong>
+              <span>GPA / 10</span>
+            </div>
+          </article>
+        </section>
+
         <section className="contact section" id="contact">
-          <div>
+          <div className="reveal reveal-left" data-reveal>
             <h2>
               LET'S BUILD
               <br />
@@ -263,14 +473,32 @@ function App() {
             </p>
             <a
               className="resume-large"
-              href="https://drive.google.com/file/d/1dxEVFh2FnqVREfScM9iKmNbUoPkOV3g3/view?usp=drive_link"
-              target="_blank"
-              rel="noreferrer"
+              href="/Aaditya_Gagneja_Resume.pdf"
+              download="Aaditya_Gagneja_Resume.pdf"
             >
               DOWNLOAD_RESUME.PDF <span>⇩</span>
             </a>
+            <div className="contact-links" aria-label="Contact and profile links">
+              <a
+                href="https://www.linkedin.com/in/aaditya-gagneja-b727a0203/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                LinkedIn ↗
+              </a>
+              <a href="https://github.com/Gagneja1512" target="_blank" rel="noreferrer">
+                GitHub ↗
+              </a>
+              <a href="https://leetcode.com/Aaditya_Gagneja/" target="_blank" rel="noreferrer">
+                LeetCode ↗
+              </a>
+              <a href="mailto:aadityaarora1215@gmail.com">Email ↗</a>
+              <a href="mailto:aadityaarora1215@gmail.com?subject=Let%27s%20schedule%20a%20conversation">
+                Schedule a conversation ↗
+              </a>
+            </div>
           </div>
-          <form onSubmit={sendMessage}>
+          <form className="reveal reveal-right" data-reveal onSubmit={sendMessage}>
             <label>
               NAME
               <input name="name" placeholder="Aaditya Arora" required />
@@ -307,6 +535,9 @@ function App() {
             </a>
             <a href="https://github.com/Gagneja1512" target="_blank" rel="noreferrer">
               GitHub
+            </a>
+            <a href="https://leetcode.com/Aaditya_Gagneja/" target="_blank" rel="noreferrer">
+              LeetCode
             </a>
             <a href="mailto:aadityaarora1215@gmail.com">Email</a>
           </nav>
@@ -348,7 +579,7 @@ const fileContents = {
   "~/projects/air-india-api/stack.txt": "FastAPI, Python , Postgresql",
   "~/projects/portfolio/README.md":
     "Personal Portfolio Platform\n\n- Responsive portfolio showcasing projects, skills, and professional experience.\n- React and JavaScript application with an EmailJS-powered visitor communication workflow.",
-  "~/projects/portfolio/stack.txt": "React, JavaScript, EmailJS",
+  "~/projects/portfolio/stack.txt": "React, JavaScript",
 };
 
 function Terminal() {
