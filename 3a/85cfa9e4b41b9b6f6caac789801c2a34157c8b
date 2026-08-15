@@ -1,0 +1,153 @@
+build/static/css/main.bf2c70b7.css
+  s_e25318cabecdee::t_a83831613371e5 1-2
+src/components/Terminal.js
+  s_e25318cabecdee::t_023fd31061bd5c 187-195,215,225-226
+  s_e25318cabecdee::t_f3f295a99af978 219-223
+  s_44648083916675::t_c7ab4738655546 6-8,17,20-27,30-36,148-152,211-214,216-218,224,227-228
+build/index.html
+  s_e25318cabecdee::t_a83831613371e5 1
+build/asset-manifest.json
+  s_e25318cabecdee::t_a83831613371e5 3,6,10
+  s_e25318cabecdee::t_725bf74f5f08f8 4,7,11
+src/styles/sections.css
+  s_e25318cabecdee::t_36e6b4274642f3 55-57,59,75-77,81-83,86,91-93,99-101,107-122,140-141,170,179,713
+  s_e25318cabecdee::t_94f9ae7b3d1546 267-269,273,276,279
+  s_e25318cabecdee::t_a6bc72c67c4421 882-883
+  s_e25318cabecdee::t_3183f9a3fa0400 60,125-128
+  s_e25318cabecdee::t_91c01825fc3378 62-66,153-157
+  s_e25318cabecdee::t_1e43d15ee3b156 54
+  s_e25318cabecdee::t_4aa7a4ce9cb1ae 61
+  s_e25318cabecdee::t_1a64c95a3453ae 67-69,72-74
+  s_e25318cabecdee::t_d89f7130f76c54 123-124
+  s_e25318cabecdee::t_870d1fb28e2141 129-131
+  s_e25318cabecdee::t_de9d120eb6325a 150-152
+  s_e25318cabecdee::t_faab7055496efc 158-160,167-169
+  s_e25318cabecdee::t_61a8a93cbdebd1 171-173,176-178
+  s_e25318cabecdee::t_2e1b7ca1fa567a 180-182
+  s_e25318cabecdee::t_98469cf8acfa3b 711-712
+  s_e25318cabecdee::t_4adf46b3fbbaa3 2,7-8,12-17,22,27-29,34,42,50,70-71,136,138,144,148-149,161-166,174-175,183-188,192,194,199-200,202,208,213,220,222,228,231-234,247,254,261,292,313,315,320,329,333-336,339,344,347,354,362,366,371,378-382,385,410,421-422,436,462,465,470-485,513,518-519,522,557,561-565,596,604,625,652,673,676-679,682-683,687-688,691,695,704,708,723,729,736,743,756,763,768,774-776,779,782,788-789,792,816-817,820,837-840,844,855,857,866-867,872-876,886
+src/styles/widgets.css
+  s_e25318cabecdee::t_023fd31061bd5c 125-149,164-166,183,196,220,261
+  s_e25318cabecdee::t_711d653602ad7b 84-94
+  s_e25318cabecdee::t_a6bc72c67c4421 123,247-252
+  s_e25318cabecdee::t_94f9ae7b3d1546 78-82
+  s_e25318cabecdee::t_90dbfd4591d276 77,83,95-98
+  s_e25318cabecdee::t_15c50f252ca76e 122
+  s_e25318cabecdee::t_981898aeb686a6 124
+  s_e25318cabecdee::t_c66b61a3a64133 32-34,37,41,46,64-67,69,73,103-105,224,231,234-238,268
+src/styles/foundation.css
+  s_e25318cabecdee::t_94f9ae7b3d1546 14-15,68,238-239,242-243,247,254,256,260,262-263,265-268,273-274,277-282,289-292,294-296,311-318,320,323
+  s_e25318cabecdee::t_90dbfd4591d276 38,69,72,76,121,127,146,330,333,352-357
+  s_e25318cabecdee::t_f3f295a99af978 114-118
+  s_e25318cabecdee::t_023fd31061bd5c 43-53,209,213-215,371,374-376
+  s_e25318cabecdee::t_7302c955e96b20 11-13
+  s_e25318cabecdee::t_5a5d733ceac2b3 35-37
+  s_e25318cabecdee::t_f23e476068a3aa 54-56,65-67
+  s_e25318cabecdee::t_e4e1b71efa5178 70-71
+  s_e25318cabecdee::t_7768d649989c93 73-75
+  s_e25318cabecdee::t_4d6b5109b223d6 113
+  s_e25318cabecdee::t_85c5333185c5ac 119-120
+  s_e25318cabecdee::t_61bd273e075300 122-126
+  s_e25318cabecdee::t_18e83a77ad1ede 128-130
+  s_e25318cabecdee::t_c419e657bb60a1 236-237
+  s_e25318cabecdee::t_ecfee4f1a6b80e 329
+  s_e25318cabecdee::t_908d4ecba9ecc6 331-332
+  s_e25318cabecdee::t_1c626958ad7d74 334-335
+  s_e25318cabecdee::t_5b1d37107f2d45 1,4-10,25,33-34,57-64,87,131-132,184-193,199-202,220,224-225,233,348
+src/App.js
+  s_e25318cabecdee::t_90dbfd4591d276 242,648
+  s_e25318cabecdee::t_cda091b2631285 110-135
+  s_e25318cabecdee::t_f3f295a99af978 196,198,206,210,256,266,273-274,304-334,350-352,355-357,602-607,665,701
+  s_e25318cabecdee::t_023fd31061bd5c 245
+  s_44648083916675::t_d14367d335dccf 1,9-15,20-44,73-77,86,89-92,106-109,136-138,158-161,165-166,192-194,218,234,250,253-255,260-261,263-265,267-272,608,610-616,618,620-628,630,633,637,647,650-653,656-657,667,672,680-682,690,698-700,702-704
+hehe.txt
+  h_d33d91b83ae0d1 1-16
+src/styles/hero.css
+  s_e25318cabecdee::t_94f9ae7b3d1546 11,14,184-187,257-259,403-406
+  s_e25318cabecdee::t_90dbfd4591d276 2-3,5,7,18,31-40,47,49,53,56-62,65,67-69,74-76,78-79,97-98,103,105,128-129,134,157,161,167-171,205,221-223,225,229,232-242,247,251-252,368,411
+  s_e25318cabecdee::t_711d653602ad7b 15,19,172,188,197,201,206,210,214,217,260,311,378,384,396-399,407,415,421
+  s_e25318cabecdee::t_91c01825fc3378 26-30,266-270,373-377
+  s_e25318cabecdee::t_b666be2a03ada7 8
+  s_e25318cabecdee::t_374f610cf2c143 16-17
+  s_e25318cabecdee::t_6eb617c32f7be3 20-25
+  s_e25318cabecdee::t_a108d3674c482b 173-175,181-183
+  s_e25318cabecdee::t_6a9bf8926a91dc 189-191,194-196
+  s_e25318cabecdee::t_5d60161eada064 198-200
+  s_e25318cabecdee::t_6db8a37ee4326a 202-204
+  s_e25318cabecdee::t_f818e5b483cad6 207-209
+  s_e25318cabecdee::t_5abe288bd25d59 211-213
+  s_e25318cabecdee::t_27c046733ccdcf 215-216
+  s_e25318cabecdee::t_1298d651cd7fdd 220
+  s_e25318cabecdee::t_822f369c8a0c31 253-255
+  s_e25318cabecdee::t_d0c2d6096cd890 261-265
+  s_e25318cabecdee::t_e89c4976acbefe 271
+  s_e25318cabecdee::t_3d0f4d3bcc887c 366-367
+  s_e25318cabecdee::t_2898efe0d438fb 369-372
+  s_e25318cabecdee::t_87ac72173ba46e 379-383
+  s_e25318cabecdee::t_439284b36ec392 385-387,393-395
+  s_e25318cabecdee::t_a8e234c7063c19 400-402
+  s_e25318cabecdee::t_2617bcaf80e2e1 408-410
+  s_e25318cabecdee::t_9901758bc3f009 412-414
+  s_e25318cabecdee::t_9237243fad50c1 416-420
+  s_e25318cabecdee::t_405b05923b4b53 176-180,192-193,277,306,314,324,388-392
+src/components/RotatingRole.js
+  s_e25318cabecdee::t_023fd31061bd5c 54,65,70-72
+src/styles/responsive.css
+  s_e25318cabecdee::t_711d653602ad7b 44,189-192,195-196,213-218
+  s_e25318cabecdee::t_a6bc72c67c4421 55,66,79,87,142,145,148,151,154,234,272-307
+  s_e25318cabecdee::t_023fd31061bd5c 31,178-179
+  s_e25318cabecdee::t_36e6b4274642f3 78,81-86
+  s_e25318cabecdee::t_5747e83a74356a 32
+  s_e25318cabecdee::t_1c3755cdcd019e 52-54
+  s_e25318cabecdee::t_34b3be3b24b0b5 56-58
+  s_e25318cabecdee::t_84b26a0ff4f4ae 63-65
+  s_e25318cabecdee::t_8d58f3184133af 77
+  s_e25318cabecdee::t_64d7c0eac82e63 80
+  s_e25318cabecdee::t_dea353b656bd42 140-141
+  s_e25318cabecdee::t_18e702420997f2 143-144
+  s_e25318cabecdee::t_4eca7acc4421f9 146-147
+  s_e25318cabecdee::t_12b4ab7580eef6 149-150
+  s_e25318cabecdee::t_987688c1c92c3d 152-153
+  s_e25318cabecdee::t_72aa98c29b58f5 155-157
+  s_e25318cabecdee::t_526a2905ba3f4e 180
+  s_e25318cabecdee::t_0af735c5aae464 188
+  s_e25318cabecdee::t_f77328a4f20aab 231-233
+  s_e25318cabecdee::t_eb7381a0e7de9d 17,21-23,25,39,47,68,175,183,186,230,247
+build/static/css/main.bf2c70b7.css.map
+  s_44648083916675::t_3c347a13fc97c0 1
+build/static/js/main.a5203cdf.js
+  s_44648083916675::t_1f52d0c89ebfc2 1-3
+build/static/js/main.a5203cdf.js.map
+  s_44648083916675::t_607ac01b81113f 1
+src/data/portfolio.js
+  s_44648083916675::t_6942e4abf4561b 2,4-5,8-10,13-24,29-33,35-44,50-51,53-55,60-61,63-68,74,76-77,85,87-88,90-91,95,97-98,100-101
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "3a85cfa9e4b41b9b6f6caac789801c2a34157c8b",
+  "prompts": {},
+  "humans": {
+    "h_d33d91b83ae0d1": {
+      "author": "Aaditya Gagneja <aadityaarora1215@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_44648083916675": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a00440-4c1e-7d71-be82-69374451a895",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Aaditya Gagneja <aadityaarora1215@gmail.com>"
+    },
+    "s_e25318cabecdee": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019ff175-adc5-7592-a7f2-f950211e3eff",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Aaditya Gagneja <aadityaarora1215@gmail.com>"
+    }
+  }
+}
