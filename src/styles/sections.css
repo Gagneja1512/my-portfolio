@@ -1,32 +1,37 @@
 .section {
-  padding: 82px 0;
+  padding: 108px 0;
 }
 .impact-strip {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  border-bottom: 1px solid var(--line);
-  background: var(--line);
-  gap: 1px;
+  gap: 16px;
+  margin-top: 28px;
 }
 .impact-strip article {
   min-width: 0;
-  padding: 32px 24px;
-  background: var(--bg);
+  padding: 28px 24px;
+  border: 1px solid color-mix(in srgb, var(--line) 65%, transparent);
+  border-radius: 22px;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--container) 40%, transparent), transparent),
+    color-mix(in srgb, var(--bg) 82%, transparent);
   display: flex;
   flex-direction: column;
   transition:
     background 0.3s ease,
+    border-color 0.3s ease,
     transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .impact-strip article:hover {
   z-index: 1;
-  background: var(--low);
-  transform: translateY(-5px);
+  background: color-mix(in srgb, var(--low) 90%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+  transform: translateY(-7px);
 }
 .impact-strip strong {
   color: var(--text);
   font:
-    600 34px/1 Geist,
+    700 40px/1 Space Grotesk,
     sans-serif;
   letter-spacing: -0.03em;
 }
@@ -34,7 +39,7 @@
   margin-top: 13px;
   color: var(--accent);
   font:
-    500 10px/1.3 JetBrains Mono,
+    500 10px/1.3 IBM Plex Mono,
     monospace;
   letter-spacing: 0.12em;
 }
@@ -42,111 +47,191 @@
   margin-top: 7px;
   color: var(--muted);
   font:
-    11px/1.45 JetBrains Mono,
+    11px/1.45 IBM Plex Mono,
     monospace;
 }
 .availability {
-  margin: 30px 0 0;
-  padding: 18px 20px;
-  border: 1px solid var(--line);
+  margin: 34px 0 0;
+  padding: 36px;
+  border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+  border-radius: 28px;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr;
+  align-items: stretch;
+  background:
+    radial-gradient(
+      circle at top left,
+      color-mix(in srgb, var(--accent) 14%, transparent),
+      transparent 42%
+    ),
+    linear-gradient(135deg, color-mix(in srgb, var(--accent) 7%, var(--bg)), var(--bg) 52%);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.2);
+}
+.availability-panel,
+.availability-scheduler {
+  min-width: 0;
+}
+.availability-panel {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.85fr) minmax(320px, 1.15fr);
+  gap: 30px 56px;
   align-items: center;
-  gap: 22px 36px;
-  background: linear-gradient(
-    110deg,
-    color-mix(in srgb, var(--accent) 5%, var(--bg)),
-    var(--bg) 42%
-  );
 }
 .availability-status,
-.availability-detail {
+.availability-detail,
+.scheduler-head,
+.slot-card {
   min-width: 0;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
-}
-.availability-status > div,
-.availability-detail {
-  min-width: 0;
 }
 .availability-status i {
   flex: none;
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
+  margin-top: 4px;
   background: #98c379;
   box-shadow: 0 0 0 4px rgba(152, 195, 121, 0.1);
   animation: availability-pulse 2.2s ease-in-out infinite;
 }
 .availability-status div,
-.availability-detail {
+.availability-detail,
+.scheduler-head,
+.slot-card {
   flex-direction: column;
   align-items: flex-start;
   gap: 4px;
 }
 .availability-status strong {
-  white-space: nowrap;
+  max-width: 22ch;
+  font:
+    600 28px/1.1 Space Grotesk,
+    sans-serif;
+  letter-spacing: -0.03em;
+  white-space: normal;
+}
+.availability-copy p {
+  max-width: 52ch;
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+.availability-meta {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  align-items: stretch;
+}
+.availability-detail {
+  height: 100%;
+  padding: 15px 16px;
+  border: 1px solid color-mix(in srgb, var(--line) 88%, transparent);
+  background: color-mix(in srgb, var(--bg) 78%, transparent);
 }
 .availability span {
   color: var(--outline);
   font:
-    8px JetBrains Mono,
+    9px IBM Plex Mono,
     monospace;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.18em;
 }
-.availability strong {
-  overflow: hidden;
+.availability-detail strong,
+.slot-card strong {
   color: var(--text);
   font:
-    10px/1.45 JetBrains Mono,
+    500 12px/1.5 IBM Plex Mono,
     monospace;
   font-weight: 500;
-  text-overflow: ellipsis;
 }
-.availability > a {
-  justify-self: start;
-  padding: 9px 10px;
+.availability-scheduler {
+  justify-content: space-between;
+  padding: 22px;
+  border: 1px solid color-mix(in srgb, var(--line) 85%, transparent);
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--bg) 45%, transparent),
+      color-mix(in srgb, var(--bg) 88%, transparent)
+    ),
+    color-mix(in srgb, var(--container) 72%, transparent);
+}
+.scheduler-head {
+  gap: 10px;
+}
+.scheduler-head strong {
+  font:
+    600 22px/1.15 Space Grotesk,
+    sans-serif;
+  letter-spacing: -0.02em;
+}
+.scheduler-slots {
+  display: grid;
+  gap: 12px;
+  margin: 22px 0 20px;
+}
+.slot-card {
+  padding: 14px 16px;
+  border: 1px solid color-mix(in srgb, var(--outline) 28%, transparent);
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+}
+.slot-card strong {
+  font-size: 11px;
+}
+.scheduler-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.scheduler-cta a {
+  padding: 11px 14px;
   border: 1px solid var(--outline);
   color: var(--accent);
   font:
-    9px JetBrains Mono,
+    10px IBM Plex Mono,
     monospace;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   white-space: nowrap;
   transition:
     background 0.25s ease,
     color 0.25s ease,
-    transform 0.25s ease;
+    transform 0.25s ease,
+    border-color 0.25s ease;
 }
-.availability > a:hover {
+.scheduler-cta a:hover {
   background: var(--text);
   color: var(--bg);
   transform: translateY(-2px);
 }
 .about-section {
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid color-mix(in srgb, var(--line) 55%, transparent);
 }
 .about-layout {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
-  gap: 80px;
+  gap: 56px;
   align-items: start;
 }
 .about-copy h2 {
   max-width: 620px;
   margin: 0 0 28px;
   font:
-    500 34px/1.25 Geist,
+    600 40px/1.15 Space Grotesk,
     sans-serif;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.04em;
 }
 .about-copy p {
   max-width: 650px;
   margin: 0 0 18px;
   color: var(--muted);
+  font-size: 17px;
 }
 .principles {
-  border-top: 1px solid var(--line);
+  border: 1px solid color-mix(in srgb, var(--line) 68%, transparent);
+  border-radius: 24px;
+  padding: 6px 28px;
+  background: color-mix(in srgb, var(--low) 70%, transparent);
 }
 .principles article {
   display: grid;
@@ -159,39 +244,39 @@
 .building-grid article > span {
   color: var(--accent);
   font:
-    10px JetBrains Mono,
+    10px IBM Plex Mono,
     monospace;
   letter-spacing: 0.1em;
 }
 .principles h3 {
   margin: 0 0 6px;
   font:
-    500 12px JetBrains Mono,
+    500 12px IBM Plex Mono,
     monospace;
   letter-spacing: 0.08em;
 }
 .principles p {
   margin: 0;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 14px;
 }
 .reveal {
   opacity: 0;
   filter: blur(7px);
   transition:
-    opacity 0.8s var(--reveal-delay, 0ms) cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.8s var(--reveal-delay, 0ms) cubic-bezier(0.16, 1, 0.3, 1),
-    filter 0.8s var(--reveal-delay, 0ms) ease;
+    opacity 560ms var(--reveal-delay, 0ms) var(--ease-out),
+    transform 560ms var(--reveal-delay, 0ms) var(--ease-out),
+    filter 400ms var(--reveal-delay, 0ms) ease;
   will-change: opacity, transform, filter;
 }
 .reveal-left {
-  transform: translate3d(-70px, 18px, 0);
+  transform: translate3d(-28px, 10px, 0);
 }
 .reveal-right {
-  transform: translate3d(70px, 18px, 0);
+  transform: translate3d(28px, 10px, 0);
 }
 .reveal-up {
-  transform: translate3d(0, 48px, 0);
+  transform: translate3d(0, 24px, 0);
 }
 .reveal.is-visible {
   opacity: 1;
@@ -204,7 +289,7 @@
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  margin-bottom: 46px;
+  margin-bottom: 54px;
   gap: 24px;
 }
 .section-head::after {
@@ -225,14 +310,14 @@
   margin: 0;
   color: var(--accent);
   font:
-    500 24px/1.4 Geist,
+    600 28px/1.25 Space Grotesk,
     sans-serif;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.06em;
 }
 .section-head > span {
   color: var(--muted);
   font:
-    12px JetBrains Mono,
+    11px IBM Plex Mono,
     monospace;
 }
 .section-head a:hover {
@@ -241,30 +326,32 @@
 .skill-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  gap: 1px;
-  border: 1px solid var(--line);
-  background: var(--line);
+  gap: 18px;
 }
 .skill-grid article {
   grid-column: span 4;
-  padding: 24px;
-  background: var(--bg);
+  padding: 28px;
+  border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+  border-radius: 22px;
+  background: color-mix(in srgb, var(--low) 58%, transparent);
   transition:
     background 0.3s ease,
+    border-color 0.3s ease,
     transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .skill-grid article:hover,
 .project-grid article:hover {
-  background: var(--low);
+  background: color-mix(in srgb, var(--low) 90%, transparent);
 }
 .skill-grid article:hover {
+  border-color: color-mix(in srgb, var(--accent) 45%, transparent);
   transform: translateY(-5px);
 }
 .skill-grid h3 {
   margin: 0 0 15px;
   color: var(--accent);
   font:
-    500 12px/1 JetBrains Mono,
+    500 12px/1 IBM Plex Mono,
     monospace;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -272,27 +359,30 @@
 .skill-grid p {
   margin: 0;
   font:
-    14px/1.5 JetBrains Mono,
+    16px/1.5 IBM Plex Mono,
     monospace;
 }
 .building-section {
-  border-top: 1px solid var(--line);
+  border-top: 1px solid color-mix(in srgb, var(--line) 55%, transparent);
 }
 .building-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  border: 1px solid var(--line);
-  background: var(--line);
+  gap: 18px;
 }
 .building-grid article {
   position: relative;
   min-height: 260px;
   padding: 28px;
   overflow: hidden;
-  background: var(--bg);
+  border: 1px solid color-mix(in srgb, var(--line) 68%, transparent);
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--container) 34%, transparent), transparent),
+    color-mix(in srgb, var(--bg) 84%, transparent);
   transition:
     background 0.3s ease,
+    border-color 0.3s ease,
     transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .building-grid article::before {
@@ -317,7 +407,7 @@
   opacity: 0;
   color: var(--outline);
   font:
-    8px/1.6 JetBrains Mono,
+    8px/1.6 IBM Plex Mono,
     monospace;
   letter-spacing: 0.08em;
   text-align: right;
@@ -328,7 +418,8 @@
 }
 .building-grid article:hover {
   z-index: 1;
-  background: var(--low);
+  background: color-mix(in srgb, var(--low) 90%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 48%, transparent);
   transform: translateY(-6px);
 }
 .building-grid article:hover::before {
@@ -342,7 +433,7 @@
 .building-grid h3 {
   margin: 52px 0 16px;
   font:
-    600 26px Geist,
+    700 28px Space Grotesk,
     sans-serif;
 }
 .building-grid p {
@@ -368,15 +459,30 @@
 .timeline article {
   position: relative;
   width: 50%;
-  min-height: 290px;
+  min-height: 320px;
 }
 .timeline article.left {
-  padding-right: 48px;
+  padding-right: 54px;
   text-align: right;
 }
 .timeline article.right {
   margin-left: 50%;
-  padding-left: 48px;
+  padding-left: 54px;
+}
+.timeline article > div {
+  padding: 28px;
+  border: 1px solid color-mix(in srgb, var(--line) 68%, transparent);
+  border-radius: 24px;
+  background: color-mix(in srgb, var(--low) 62%, transparent);
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease;
+}
+.timeline article:hover > div {
+  transform: translateY(-6px);
+  border-color: color-mix(in srgb, var(--accent) 42%, transparent);
+  background: color-mix(in srgb, var(--low) 92%, transparent);
 }
 .timeline .node {
   position: absolute;
@@ -404,16 +510,16 @@
 .timeline time {
   color: var(--accent);
   font:
-    12px JetBrains Mono,
+    11px IBM Plex Mono,
     monospace;
   letter-spacing: 0.12em;
 }
 .timeline h3 {
-  font: 600 24px Geist;
-  margin: 3px 0;
+  font: 700 28px Space Grotesk;
+  margin: 8px 0 4px;
 }
 .timeline small {
-  font: 14px JetBrains Mono;
+  font: 13px IBM Plex Mono;
   color: var(--muted);
 }
 .experience-details {
@@ -448,13 +554,15 @@
 .project-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
+  gap: 20px;
 }
 .project-grid article {
   padding: 32px;
-  background: var(--bg);
+  border: 1px solid color-mix(in srgb, var(--line) 68%, transparent);
+  border-radius: 26px;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--container) 34%, transparent), transparent),
+    color-mix(in srgb, var(--bg) 86%, transparent);
   min-height: 440px;
   display: flex;
   flex-direction: column;
@@ -485,7 +593,7 @@
   transform: translateX(120%);
 }
 .project-icon {
-  font: 42px Geist;
+  font: 700 42px/1 Space Grotesk;
   color: var(--muted);
   transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
@@ -493,7 +601,7 @@
   transform: translate(5px, -5px) rotate(8deg);
 }
 .project-grid h3 {
-  font: 500 24px Geist;
+  font: 700 30px Space Grotesk;
   margin: 42px 0 18px;
 }
 .project-details {
@@ -514,7 +622,7 @@
   left: 0;
   color: var(--accent);
   font:
-    12px JetBrains Mono,
+    12px IBM Plex Mono,
     monospace;
 }
 .project-footer {
@@ -541,7 +649,7 @@
   background: transparent;
   color: var(--text);
   font:
-    500 10px JetBrains Mono,
+    500 10px IBM Plex Mono,
     monospace;
   letter-spacing: 0.08em;
   cursor: pointer;
@@ -562,25 +670,29 @@
 .achievement-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
+  gap: 18px;
 }
 .achievement-grid article {
-  border: 1px solid var(--line);
-  padding: 24px;
+  border: 1px solid color-mix(in srgb, var(--line) 68%, transparent);
+  border-radius: 24px;
+  padding: 28px;
+  background: color-mix(in srgb, var(--low) 58%, transparent);
   transition:
     transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
-    background 0.3s ease;
+    background 0.3s ease,
+    border-color 0.3s ease;
 }
 .achievement-grid article:hover {
   transform: translateY(-6px);
-  background: var(--low);
+  background: color-mix(in srgb, var(--low) 90%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 42%, transparent);
 }
 .achievement-grid h3 {
-  font: 600 24px Geist;
+  font: 700 28px Space Grotesk;
   margin: 0 0 5px;
 }
 .achievement-grid p {
-  font: 14px JetBrains Mono;
+  font: 14px IBM Plex Mono;
   color: var(--muted);
   margin: 0;
 }
@@ -589,15 +701,16 @@
   margin-top: 14px;
   color: var(--outline);
   font:
-    11px/1.5 JetBrains Mono,
+    11px/1.5 IBM Plex Mono,
     monospace;
 }
 .education {
-  border-top: 1px solid var(--line);
+  border-top: 1px solid color-mix(in srgb, var(--line) 55%, transparent);
 }
 .education-card {
-  border: 1px solid var(--line);
-  padding: 32px;
+  border: 1px solid color-mix(in srgb, var(--line) 68%, transparent);
+  border-radius: 28px;
+  padding: 36px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -607,27 +720,27 @@
     transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .education-card:hover {
-  background: var(--low);
+  background: color-mix(in srgb, var(--low) 88%, transparent);
   transform: translateY(-5px);
 }
 .education-date {
   color: var(--accent);
   font:
-    11px JetBrains Mono,
+    11px IBM Plex Mono,
     monospace;
   letter-spacing: 0.12em;
 }
 .education-card h3 {
   margin: 12px 0 5px;
   font:
-    600 24px Geist,
+    700 30px Space Grotesk,
     sans-serif;
 }
 .education-card p {
   margin: 0;
   color: var(--muted);
   font:
-    13px JetBrains Mono,
+    13px IBM Plex Mono,
     monospace;
 }
 .education-score {
@@ -640,40 +753,43 @@
 }
 .education-score strong {
   font:
-    600 38px/1 Geist,
+    700 42px/1 Space Grotesk,
     sans-serif;
 }
 .education-score span {
   margin-top: 8px;
   color: var(--accent);
   font:
-    10px JetBrains Mono,
+    10px IBM Plex Mono,
     monospace;
   letter-spacing: 0.12em;
 }
 .contact {
-  border-top: 1px solid var(--line);
+  border-top: 1px solid color-mix(in srgb, var(--line) 55%, transparent);
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 64px;
 }
 .contact h2 {
-  font: 500 24px/1.4 Geist;
-  margin: 0 0 32px;
+  font: 700 42px/1.02 Space Grotesk;
+  letter-spacing: -0.05em;
+  margin: 0 0 24px;
 }
 .contact > div > p {
-  max-width: 380px;
+  max-width: 460px;
   color: var(--muted);
   margin-bottom: 32px;
+  font-size: 17px;
 }
 .resume-large {
   display: inline-flex;
   align-items: center;
   gap: 20px;
-  padding: 16px 32px;
+  padding: 16px 24px;
+  border-radius: 999px;
   background: var(--accent);
   color: var(--button-text);
-  font: 500 12px JetBrains Mono;
+  font: 500 11px IBM Plex Mono;
   letter-spacing: 0.1em;
   transition:
     transform 0.3s ease,
@@ -697,10 +813,11 @@
 }
 .contact-links a {
   padding: 8px 10px;
-  border: 1px solid var(--line);
+  border: 1px solid color-mix(in srgb, var(--line) 75%, transparent);
+  border-radius: 999px;
   color: var(--muted);
   font:
-    10px JetBrains Mono,
+    10px IBM Plex Mono,
     monospace;
   letter-spacing: 0.05em;
   transition:
@@ -717,10 +834,14 @@ form {
   display: flex;
   flex-direction: column;
   gap: 22px;
+  padding: 30px;
+  border: 1px solid color-mix(in srgb, var(--line) 68%, transparent);
+  border-radius: 28px;
+  background: color-mix(in srgb, var(--low) 62%, transparent);
 }
 form label {
   color: var(--accent);
-  font: 500 12px/1 JetBrains Mono;
+  font: 500 12px/1 IBM Plex Mono;
   letter-spacing: 0.1em;
 }
 form input,
@@ -731,10 +852,9 @@ form textarea {
   padding: 12px;
   background: var(--container);
   color: var(--text);
-  border: 0;
-  border-bottom: 2px solid var(--line);
+  border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
   outline: 0;
-  font: 14px JetBrains Mono;
+  font: 14px IBM Plex Mono;
   resize: vertical;
   transition:
     border-color 0.25s ease,
@@ -743,24 +863,27 @@ form textarea {
 }
 form input:focus,
 form textarea:focus {
-  border-color: var(--text);
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--high) 55%, transparent);
   transform: translateX(4px);
 }
 form button {
   padding: 15px;
-  border: 1px solid var(--text);
-  background: none;
-  color: var(--text);
-  font: 500 12px JetBrains Mono;
+  border: 0;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--button-text);
+  font: 500 12px IBM Plex Mono;
   letter-spacing: 0.1em;
   cursor: pointer;
   transition:
     background 0.25s ease,
     color 0.25s ease,
-    letter-spacing 0.3s ease;
+    letter-spacing 0.3s ease,
+    transform 150ms var(--ease-out);
 }
 form button:hover {
-  background: var(--text);
+  background: color-mix(in srgb, var(--text) 90%, var(--accent));
   color: var(--bg);
   letter-spacing: 0.18em;
 }

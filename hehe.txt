@@ -1,0 +1,16 @@
+REELSCORE
+Built ReelScore, a Manifest V3 Firefox/Chrome extension using React, TypeScript, Vite, Tailwind, Zustand, and Dexie IndexedDB to locally track Instagram Reel activity, import Instagram data exports, and generate analytics such as Reel Score, Wrapped insights, friend leaderboards, and Ad Mirror privacy summaries.
+
+Implemented a local-first privacy architecture with ZIP/JSON import parsing, IndexedDB storage, no backend data transfer, export/delete controls, Firefox AMO-compliant packaging, automated build scripts, ESLint/Prettier, Vitest tests, and Playwright smoke testing.
+
+
+
+
+
+
+Resume
+Built a distributed event scheduler using React, FastAPI, PostgreSQL, Redis, Kafka, and horizontally scalable Go workers for reliable webhook execution.
+Deployed the containerized stack on Azure with Docker Compose and Caddy, providing automatic HTTPS, reverse proxying, health checks, and secure service isolation.
+Portfolio
+Implemented cron scheduling, transactional outbox, distributed locks, retries, DLQ handling, rate limiting, JWT authentication, idempotency, and observability.
+Designed an at-least-once event-driven architecture that coordinates concurrent schedulers and preserves execution ordering across Kafka partitions.

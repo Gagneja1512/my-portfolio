@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import RotatingRole from "./components/RotatingRole";
 import SectionHead from "./components/SectionHead";
 import Terminal from "./components/Terminal";
@@ -6,11 +6,42 @@ import { experience, impact, projects, skills } from "./data/portfolio";
 import "./App.css";
 
 function App() {
-  const [light, setLight] = useState(false);
+  const [light, setLight] = useState(() => {
+    if (typeof window === "undefined") return false;
+    const saved = window.localStorage.getItem("portfolio-theme");
+    if (saved === "light") return true;
+    if (saved === "dark") return false;
+    return window.matchMedia("(prefers-color-scheme: light)").matches;
+  });
   const [menuOpen, setMenuOpen] = useState(false);
   const [active, setActive] = useState("profile");
   const [scrollProgress, setScrollProgress] = useState(0);
   const [paletteOpen, setPaletteOpen] = useState(false);
+  const paletteRef = useRef(null);
+  const paletteTriggerRef = useRef(null);
+  const restorePaletteFocusRef = useRef(true);
+
+  const nav = [
+    "profile",
+    "skills",
+    "building",
+    "experience",
+    "projects",
+    "achievements",
+    "education",
+    "contact",
+  ];
+
+  const paletteItems = [
+    ["profile", "About", "01"],
+    ["skills", "Technical stack", "02"],
+    ["building", "Currently exploring", "03"],
+    ["experience", "Experience", "04"],
+    ["projects", "Projects", "05"],
+    ["achievements", "Achievements", "06"],
+    ["education", "Education", "07"],
+    ["contact", "Contact", "08"],
+  ];
 
   useEffect(() => {
     const sections = [...document.querySelectorAll("main section[id]")];
@@ -40,6 +71,11 @@ function App() {
   }, []);
 
   useEffect(() => {
+    window.localStorage.setItem("portfolio-theme", light ? "light" : "dark");
+    document.documentElement.style.colorScheme = light ? "light" : "dark";
+  }, [light]);
+
+  useEffect(() => {
     const updateProgress = () => {
       const scrollable = document.documentElement.scrollHeight - window.innerHeight;
       setScrollProgress(scrollable > 0 ? Math.min(100, (window.scrollY / scrollable) * 100) : 0);
@@ -47,9 +83,13 @@ function App() {
     const handleKeyboard = (event) => {
       if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
         event.preventDefault();
+        restorePaletteFocusRef.current = true;
         setPaletteOpen((current) => !current);
       }
-      if (event.key === "Escape") setPaletteOpen(false);
+      if (event.key === "Escape") {
+        setPaletteOpen(false);
+        setMenuOpen(false);
+      }
     };
 
     updateProgress();
@@ -62,6 +102,39 @@ function App() {
       window.removeEventListener("keydown", handleKeyboard);
     };
   }, []);
+
+  useEffect(() => {
+    if (!paletteOpen) return undefined;
+
+    const previousOverflow = document.body.style.overflow;
+    const paletteTrigger = paletteTriggerRef.current;
+    const focusable = paletteRef.current?.querySelectorAll(
+      'button, a[href], input, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+    const first = focusable?.[0];
+    const last = focusable?.[focusable.length - 1];
+
+    document.body.style.overflow = "hidden";
+    first?.focus();
+
+    const trapFocus = (event) => {
+      if (event.key !== "Tab" || !focusable?.length) return;
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last?.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first?.focus();
+      }
+    };
+
+    document.addEventListener("keydown", trapFocus);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", trapFocus);
+      if (restorePaletteFocusRef.current) paletteTrigger?.focus();
+    };
+  }, [paletteOpen]);
 
   const moveSpotlight = (event) => {
     event.currentTarget.style.setProperty("--pointer-x", `${event.clientX}px`);
@@ -82,19 +155,15 @@ function App() {
     window.location.href = `mailto:aadityaarora1215@gmail.com?subject=${subject}&body=${body}`;
   };
 
-  const nav = [
-    "profile",
-    "skills",
-    "experience",
-    "projects",
-    "achievements",
-    "education",
-    "contact",
-  ];
+  const closePalette = (restoreFocus = true) => {
+    restorePaletteFocusRef.current = restoreFocus;
+    setPaletteOpen(false);
+  };
 
   const navigateTo = (section) => {
     document.getElementById(section)?.scrollIntoView({ behavior: "smooth" });
-    setPaletteOpen(false);
+    closePalette(false);
+    setMenuOpen(false);
   };
 
   return (
@@ -119,12 +188,14 @@ function App() {
       <div className="code-cursor" aria-hidden="true">
         <i className="cursor-dot" />
         <i className="cursor-reticle" />
-        <span>PTR</span>
       </div>
+      <a className="skip-link" href="#site-content">
+        Skip to content
+      </a>
       <header className="topbar">
-        <span className="scroll-progress" style={{ "--scroll-progress": `${scrollProgress}%` }} />
+        <span className="scroll-progress" style={{ "--scroll-progress": scrollProgress / 100 }} />
         <div className="nav-wrap">
-          <a className="brand" href="#profile">
+          <a className="brand" href="#profile" onClick={() => setMenuOpen(false)}>
             AADITYA GAGNEJA
           </a>
           <button
@@ -132,10 +203,11 @@ function App() {
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle navigation"
             aria-expanded={menuOpen}
+            aria-controls="main-nav"
           >
             {menuOpen ? "CLOSE" : "MENU"}
           </button>
-          <nav className={menuOpen ? "nav open" : "nav"} aria-label="Main navigation">
+          <nav className={menuOpen ? "nav open" : "nav"} aria-label="Main navigation" id="main-nav">
             {nav.map((item) => (
               <a
                 key={item}
@@ -143,7 +215,7 @@ function App() {
                 href={`#${item}`}
                 onClick={() => setMenuOpen(false)}
               >
-                {item === "profile" ? "About" : item}
+                {item === "profile" ? "About" : item === "building" ? "Exploring" : item}
               </a>
             ))}
           </nav>
@@ -159,6 +231,7 @@ function App() {
               className="theme-button"
               onClick={() => setLight(!light)}
               aria-label={`Switch to ${light ? "dark" : "light"} mode`}
+              aria-pressed={light}
             >
               {light ? "●" : "◐"}
             </button>
@@ -166,24 +239,39 @@ function App() {
         </div>
       </header>
 
-      <aside className="system-rail" aria-hidden="true">
+      <aside className={`system-rail${scrollProgress > 4 ? " is-visible" : ""}`} aria-hidden="true">
         <span>SYS.PROGRESS</span>
         <div>
-          <i style={{ height: `${scrollProgress}%` }} />
+          <i style={{ "--scroll-progress": scrollProgress / 100 }} />
         </div>
         <strong>{String(Math.round(scrollProgress)).padStart(3, "0")}%</strong>
       </aside>
 
-      <main>
+      <main className="portfolio-main" id="site-content" tabIndex="-1">
         <section className="hero" id="profile">
           <div className="hero-copy hero-enter">
-            <span className="status">[SYSTEM_STATUS: ACTIVE]</span>
+            <div className="hero-eyebrow">
+              <span className="status">[SYSTEM_STATUS: ACTIVE]</span>
+              <span className="hero-note">AVAILABLE FOR SELECT BACKEND ROLES</span>
+            </div>
             <h1>AADITYA GAGNEJA</h1>
             <RotatingRole />
             <p className="intro">
-              Software Development Engineer 2 @ <strong>Tata 1mg</strong> | Backend Architecture,
-              Distributed Systems &amp; High-Throughput APIs
+              Software Development Engineer 2 @ <strong>Tata 1mg</strong> | High-Throughput APIs,
+              Distributed Systems &amp; Technical Ownership
             </p>
+            <div className="hero-actions">
+              <a className="hero-primary" href="#contact">
+                START A CONVERSATION
+              </a>
+              <a
+                className="hero-secondary"
+                href="/Aaditya_Gagneja_Resume.pdf"
+                download="Aaditya_Gagneja_Resume.pdf"
+              >
+                DOWNLOAD RESUME
+              </a>
+            </div>
             <div className="facts">
               <div>
                 <span>LOCATION</span>CHANDIGARH, INDIA
@@ -213,29 +301,39 @@ function App() {
           ))}
         </section>
 
-        <section className="availability reveal reveal-up" data-reveal>
-          <div className="availability-status">
-            <i />
-            <div>
-              <span>PROFESSIONAL_STATUS : </span>
-              <strong>Open to opportunities</strong>
+        <section
+          className="availability reveal reveal-up"
+          data-reveal
+          aria-label="Schedule a conversation"
+        >
+          <div className="availability-panel">
+            <div className="availability-status">
+              <i />
+              <div>
+                <strong>Open to backend and platform conversations</strong>
+              </div>
+            </div>
+            <div className="availability-copy">
+              <p>
+                If you are hiring for distributed systems, platform reliability, or high-throughput
+                API ownership, this is the fastest path to connect.
+              </p>
+            </div>
+            <div className="availability-meta">
+              <div className="availability-detail">
+                <span>FORMAT</span>
+                <strong>Intro call · Technical discussion</strong>
+              </div>
+              <div className="availability-detail">
+                <span>TIMEZONE</span>
+                <strong>IST · Flexible overlap with EU / US teams</strong>
+              </div>
+              <div className="availability-detail">
+                <span>FOCUS</span>
+                <strong>Distributed Systems · Platform Engineering</strong>
+              </div>
             </div>
           </div>
-          <div className="availability-detail">
-            <span>FOCUS</span>
-            <strong>Distributed Systems · Platform Engineering</strong>
-          </div>
-          <div className="availability-detail">
-            <span>PREFERRED ROLES</span>
-            <strong>Backend Engineer · Platform Engineer</strong>
-          </div>
-          <div className="availability-detail">
-            <span>LOCATION</span>
-            <strong>Chandigarh, India</strong>
-          </div>
-          <a href="mailto:aadityaarora1215@gmail.com?subject=Backend%20opportunity">
-            DISCUSS A ROLE ↗
-          </a>
         </section>
 
         <section className="section about-section" aria-labelledby="about-title">
@@ -249,14 +347,14 @@ function App() {
               </h2>
               <p>
                 I’m a Software Development Engineer at Tata 1mg, focused on backend architecture,
-                distributed systems, and high-throughput APIs. My work spans service ownership,
-                zero-downtime migrations, asynchronous workflows, caching, partner integrations, and
-                production reliability.
+                distributed systems, and high-throughput APIs. I own services handling 50K+ daily
+                requests, lead zero-downtime migrations, and build asynchronous workflows with
+                measurable latency and reliability outcomes.
               </p>
               <p>
-                I enjoy turning complex business workflows into simple, resilient systems. I value
-                measurable performance, thoughtful trade-offs, clear code reviews, and engineering
-                decisions that make systems easier for the next person to operate and extend.
+                I enjoy turning complex business workflows into resilient systems and helping teams
+                ship them safely. My recent work includes mentoring interns, reviewing 30+ pull
+                requests, and coordinating 5+ production releases.
               </p>
             </div>
             <div className="principles reveal reveal-right" data-reveal>
@@ -443,11 +541,6 @@ function App() {
               <p>Max rating: 1418</p>
               <small>Ranked 1,486 / 12,000+ in Round 820</small>
             </article>
-            <article className="reveal reveal-up" data-reveal style={{ "--reveal-delay": "180ms" }}>
-              <h3>80+ Problems</h3>
-              <p>Authored for Coding Shuttle</p>
-              <small>Algorithmic challenges for platform learners</small>
-            </article>
           </div>
         </section>
 
@@ -506,21 +599,42 @@ function App() {
               </a>
             </div>
           </div>
-          <form className="reveal reveal-right" data-reveal onSubmit={sendMessage}>
-            <label>
+          <form
+            className="reveal reveal-right"
+            data-reveal
+            onSubmit={sendMessage}
+            aria-label="Contact form"
+          >
+            <label htmlFor="contact-name">
               NAME
-              <input name="name" placeholder="Aaditya Arora" required />
+              <input
+                id="contact-name"
+                name="name"
+                placeholder="Aaditya Arora"
+                autoComplete="name"
+                required
+              />
             </label>
-            <label>
+            <label htmlFor="contact-email">
               EMAIL
-              <input name="email" type="email" placeholder="aadityaarora1215@gmail.com" required />
+              <input
+                id="contact-email"
+                name="email"
+                type="email"
+                placeholder="aadityaarora1215@gmail.com"
+                autoComplete="email"
+                inputMode="email"
+                required
+              />
             </label>
-            <label>
+            <label htmlFor="contact-message">
               MESSAGE
               <textarea
+                id="contact-message"
                 name="message"
                 rows="4"
                 placeholder="DESCRIBE THE SYSTEM ARCHITECTURE..."
+                autoComplete="off"
                 required
               />
             </label>
@@ -530,11 +644,17 @@ function App() {
       </main>
 
       <button
-        className="command-trigger"
+        ref={paletteTriggerRef}
+        className={`command-trigger${scrollProgress > 4 ? " is-visible" : ""}`}
         type="button"
-        onClick={() => setPaletteOpen(true)}
+        onClick={() => {
+          restorePaletteFocusRef.current = true;
+          setPaletteOpen(true);
+        }}
         aria-label="Open command palette"
         aria-haspopup="dialog"
+        aria-expanded={paletteOpen}
+        aria-controls="command-palette"
       >
         <i />
         <span>QUICK_NAV</span>
@@ -542,16 +662,14 @@ function App() {
       </button>
 
       {paletteOpen && (
-        <div
-          className="command-overlay"
-          role="presentation"
-          onMouseDown={() => setPaletteOpen(false)}
-        >
+        <div className="command-overlay" role="presentation" onMouseDown={() => closePalette()}>
           <section
+            ref={paletteRef}
             className="command-palette"
             role="dialog"
             aria-modal="true"
             aria-labelledby="command-title"
+            id="command-palette"
             onMouseDown={(event) => event.stopPropagation()}
           >
             <div className="command-titlebar">
@@ -559,7 +677,9 @@ function App() {
                 <i />
                 <span id="command-title">portfolio.command</span>
               </div>
-              <kbd>ESC</kbd>
+              <button type="button" className="command-close" onClick={() => closePalette()}>
+                Close
+              </button>
             </div>
             <div className="command-input">
               <span>›</span>
@@ -567,16 +687,7 @@ function App() {
               <b>READY</b>
             </div>
             <div className="command-list">
-              {[
-                ["profile", "About", "01"],
-                ["skills", "Technical stack", "02"],
-                ["building", "Currently exploring", "03"],
-                ["experience", "Experience", "04"],
-                ["projects", "Projects", "05"],
-                ["achievements", "Achievements", "06"],
-                ["education", "Education", "07"],
-                ["contact", "Contact", "08"],
-              ].map(([section, label, shortcut]) => (
+              {paletteItems.map(([section, label, shortcut]) => (
                 <button type="button" onClick={() => navigateTo(section)} key={section}>
                   <span>{label}</span>
                   <kbd>{shortcut}</kbd>
@@ -584,7 +695,13 @@ function App() {
               ))}
             </div>
             <div className="command-actions">
-              <button type="button" onClick={() => setLight((current) => !current)}>
+              <button
+                type="button"
+                onClick={() => {
+                  closePalette();
+                  setLight((current) => !current);
+                }}
+              >
                 {light ? "Switch to dark mode" : "Switch to light mode"}
               </button>
               <a href="/Aaditya_Gagneja_Resume.pdf" download="Aaditya_Gagneja_Resume.pdf">

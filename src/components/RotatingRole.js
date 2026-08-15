@@ -51,7 +51,7 @@ function RotatingRole() {
   }, []);
 
   return (
-    <div className="rotating-role" aria-live="polite" aria-atomic="true">
+    <div className="rotating-role">
       <div className="role-window-head" aria-hidden="true">
         <span>
           <i />
@@ -62,11 +62,14 @@ function RotatingRole() {
           {String(rotatingRoles.length).padStart(2, "0")}
         </small>
       </div>
-      <div className="role-window-body">
+      <div className="role-window-body" aria-hidden="true">
         <span aria-hidden="true">const role =</span>
         <strong>&quot;{displayedRole}&quot;</strong>
         <i aria-hidden="true" />
       </div>
+      <span className="sr-only" aria-live="polite" aria-atomic="true">
+        {rotatingRoles[activeRoleIndex]}
+      </span>
     </div>
   );
 }

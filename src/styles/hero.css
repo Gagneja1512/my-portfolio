@@ -1,50 +1,82 @@
 .hero {
-  min-height: 690px;
-  padding: 126px 0;
+  min-height: 680px;
+  padding: 88px 0 76px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1.12fr) minmax(360px, 0.88fr);
   gap: 72px;
-  align-items: start;
-  border-bottom: 1px solid var(--line);
+  align-items: center;
+  border-bottom: 1px solid color-mix(in srgb, var(--line) 65%, transparent);
 }
 .hero-enter {
-  animation: hero-copy-in 0.9s 0.1s both cubic-bezier(0.16, 1, 0.3, 1);
+  animation: hero-copy-in 600ms 80ms both var(--ease-out);
 }
 .hero-terminal {
-  animation: hero-terminal-in 1s 0.22s both cubic-bezier(0.16, 1, 0.3, 1);
+  animation: hero-terminal-in 650ms 140ms both var(--ease-out);
+}
+.hero-copy {
+  position: relative;
+  padding: 0;
+}
+.hero-copy::after {
+  content: "";
+  position: absolute;
+  inset: -18% auto auto 55%;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--accent) 22%, transparent),
+    transparent 68%
+  );
+  opacity: 0.25;
+  pointer-events: none;
+  filter: blur(10px);
+}
+.hero-eyebrow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
 }
 .status,
 .tags span {
   display: inline-block;
   border: 1px solid var(--accent);
   font:
-    400 12px/1 JetBrains Mono,
+    400 11px/1 IBM Plex Mono,
     monospace;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.1em;
   color: var(--accent);
 }
 .status {
-  padding: 9px 13px;
-  margin-bottom: 28px;
+  padding: 8px 11px;
   animation: status-pulse 2.8s ease-in-out infinite;
+}
+.hero-note {
+  color: var(--outline);
+  font:
+    500 10px/1 IBM Plex Mono,
+    monospace;
+  letter-spacing: 0.14em;
 }
 .hero h1 {
   font:
-    600 48px/1.1 Geist,
+    700 clamp(3rem, 5.5vw, 5rem) / 0.94 Space Grotesk,
     sans-serif;
-  letter-spacing: -0.02em;
-  margin: 0 0 24px;
+  letter-spacing: -0.04em;
+  max-width: 9ch;
+  margin: 0 0 22px;
 }
 .rotating-role {
   position: relative;
   width: min(100%, 470px);
-  margin: -8px 0 24px;
-  border: 1px solid var(--line);
+  margin: 0 0 24px;
+  border: 0;
+  border-block: 1px solid color-mix(in srgb, var(--line) 72%, transparent);
   overflow: hidden;
-  background: color-mix(in srgb, var(--low) 80%, transparent);
-  box-shadow:
-    0 15px 35px rgba(0, 0, 0, 0.12),
-    inset 0 1px color-mix(in srgb, var(--text) 4%, transparent);
+  background: color-mix(in srgb, var(--low) 82%, transparent);
+  box-shadow: none;
   color: var(--text);
 }
 .rotating-role::after {
@@ -62,15 +94,15 @@
   animation: role-window-scan 4.5s ease-in-out infinite;
 }
 .role-window-head {
-  min-height: 30px;
-  padding: 0 12px;
+  min-height: 28px;
+  padding: 0 2px;
   border-bottom: 1px solid var(--line);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: color-mix(in srgb, var(--high) 65%, transparent);
+  background: transparent;
   font:
-    500 8px/1 JetBrains Mono,
+    500 8px/1 IBM Plex Mono,
     monospace;
   letter-spacing: 0.12em;
 }
@@ -93,13 +125,13 @@
   font: inherit;
 }
 .role-window-body {
-  min-height: 59px;
-  padding: 15px 16px;
+  min-height: 56px;
+  padding: 12px 2px;
   display: flex;
   align-items: center;
   gap: 9px;
   font:
-    500 16px/1.4 JetBrains Mono,
+    500 15px/1.4 IBM Plex Mono,
     monospace;
 }
 .role-window-body > span {
@@ -122,49 +154,127 @@
   animation: role-caret 0.85s steps(1) infinite;
 }
 .intro {
-  max-width: 480px;
+  max-width: 560px;
   margin: 0;
   color: var(--muted);
   font:
-    500 24px/1.4 Geist,
+    500 clamp(1.15rem, 2vw, 1.45rem) / 1.45 Space Grotesk,
     sans-serif;
 }
 .intro strong {
   color: var(--text);
 }
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 26px;
+}
+.hero-primary,
+.hero-secondary {
+  position: relative;
+  overflow: hidden;
+  padding: 14px 20px;
+  border-radius: 999px;
+  font:
+    500 11px/1 IBM Plex Mono,
+    monospace;
+  letter-spacing: 0.12em;
+  transition:
+    transform 150ms var(--ease-out),
+    background 160ms ease,
+    color 160ms ease,
+    border-color 160ms ease;
+}
+.hero-primary::after,
+.hero-secondary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 20%, rgba(255, 255, 255, 0.28), transparent 60%);
+  transform: translateX(-130%);
+  transition: transform 0.7s ease;
+}
+.hero-primary {
+  background: var(--accent);
+  color: var(--button-text);
+}
+.hero-secondary {
+  border: 1px solid color-mix(in srgb, var(--outline) 70%, transparent);
+  background: color-mix(in srgb, var(--container) 55%, transparent);
+  color: var(--text);
+}
+.hero-primary:hover,
+.hero-secondary:hover {
+  transform: translateY(-3px);
+}
+.hero-primary:hover::after,
+.hero-secondary:hover::after {
+  transform: translateX(130%);
+}
+.hero-secondary:hover {
+  border-color: var(--text);
+}
 .facts {
   display: flex;
-  gap: 36px;
-  margin-top: 54px;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-top: 30px;
+  border-top: 1px solid color-mix(in srgb, var(--line) 65%, transparent);
   font:
-    400 13px/1.4 JetBrains Mono,
+    400 12px/1.45 IBM Plex Mono,
     monospace;
 }
 .facts div {
+  position: relative;
   display: flex;
   flex-direction: column;
+  min-width: 0;
+  padding: 12px 20px 0 0;
+  border: 0;
+  background: transparent;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease;
+}
+.facts div:hover {
+  color: var(--text);
 }
 .facts span {
   color: var(--accent);
   opacity: 0.65;
-  font-size: 11px;
+  font-size: 10px;
   letter-spacing: 0.12em;
 }
 .terminal {
-  margin-top: 30px;
-  border: 1px solid var(--line);
-  background: var(--low);
-  box-shadow: 0 28px 45px rgba(0, 0, 0, 0.25);
+  position: relative;
+  margin-top: 0;
+  border: 1px solid color-mix(in srgb, var(--line) 75%, transparent);
+  background: color-mix(in srgb, var(--low) 88%, transparent);
+  box-shadow: 0 35px 70px rgba(0, 0, 0, 0.34);
   transition:
-    transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
-    box-shadow 0.45s ease,
-    border-color 0.3s ease;
+    transform 180ms var(--ease-out),
+    box-shadow 180ms ease,
+    border-color 160ms ease;
+}
+.terminal::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at 85% 12%,
+    color-mix(in srgb, var(--accent) 12%, transparent),
+    transparent 24%
+  );
+  opacity: 0.8;
 }
 .terminal:hover,
 .terminal:focus-within {
   transform: translateY(-6px);
   border-color: var(--outline);
-  box-shadow: 0 36px 70px rgba(0, 0, 0, 0.34);
+  box-shadow: 0 42px 88px rgba(0, 0, 0, 0.38);
 }
 .terminal-bar {
   height: 39px;
@@ -193,15 +303,15 @@
   margin-left: auto;
   color: var(--muted);
   font:
-    14px JetBrains Mono,
+    13px IBM Plex Mono,
     monospace;
 }
 .terminal-body {
   padding: 24px;
-  height: 286px;
+  height: 250px;
   overflow: auto;
   font:
-    13px/1.55 JetBrains Mono,
+    13px/1.55 IBM Plex Mono,
     monospace;
   cursor: text;
   scrollbar-width: thin;
@@ -211,6 +321,7 @@
   min-height: 20px;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
+  animation: terminal-line-in 0.35s ease both;
 }
 .terminal-line.system,
 .terminal-line.output {
@@ -251,4 +362,60 @@
   caret-color: var(--text);
   font: inherit;
   outline: 0;
+}
+.terminal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 18px 18px;
+  border-top: 1px solid color-mix(in srgb, var(--line) 72%, transparent);
+  background: linear-gradient(
+    180deg,
+    transparent,
+    color-mix(in srgb, var(--container) 45%, transparent)
+  );
+}
+.terminal-meta,
+.terminal-shortcuts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.terminal-meta span,
+.terminal-shortcuts button {
+  padding: 6px 10px;
+  border: 1px solid color-mix(in srgb, var(--line) 74%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--bg) 72%, transparent);
+  color: var(--muted);
+  font:
+    10px/1 IBM Plex Mono,
+    monospace;
+  letter-spacing: 0.08em;
+}
+.terminal-meta span:last-child {
+  display: none;
+}
+.terminal-shortcuts button {
+  cursor: pointer;
+  transition:
+    transform 150ms var(--ease-out),
+    color 160ms ease,
+    border-color 160ms ease,
+    background 160ms ease;
+}
+.terminal-shortcuts button:hover,
+.terminal-shortcuts button:focus-visible {
+  transform: translateY(-2px);
+  color: var(--text);
+  border-color: color-mix(in srgb, var(--accent) 60%, transparent);
+  background: color-mix(in srgb, var(--low) 92%, transparent);
+  outline: 0;
+}
+@keyframes terminal-line-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
 }

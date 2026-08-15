@@ -1,64 +1,80 @@
 export const skills = [
-  { title: "Languages", values: "Python, Java, Ruby, C++" },
-  { title: "Frameworks", values: "FastAPI, Sanic, Ruby on Rails" },
-  { title: "Databases", values: "MongoDB, PostgreSQL, Redis" },
+  { title: "Languages", values: "Python, Go, Ruby, C++, JavaScript, SQL" },
   {
-    title: "Tools & Infra",
-    values: "AWS (S3/SQS/SNS/EC2), Kafka, Git, Linux, GitHub, Bitbucket, Kloudfuse, Sentry",
+    title: "Frameworks",
+    values: "FastAPI, Sanic, Ruby on Rails, Node.js, React",
   },
   {
-    title: "Backend Concepts",
-    values: "REST, Event-Driven Architecture, Async Processing, Indexing, Caching, Microservices",
+    title: "Data & Infrastructure",
+    values:
+      "PostgreSQL, MongoDB, Redis, Kafka, AWS (S3/SQS/SNS/EC2), Docker, Linux",
   },
   {
-    title: "Fundamentals",
-    values: "DBMS, Operating Systems, DSA, Object-Oriented Programming, Computer Networks",
+    title: "AI Engineering",
+    values:
+      "Agentic AI workflows, Model Context Protocol (MCP), reusable skills, AI-assisted development",
+  },
+  {
+    title: "Engineering",
+    values:
+      "REST APIs, microservices, distributed systems, event-driven architecture, async processing, caching, indexing, idempotency, observability",
+  },
+  {
+    title: "Developer Tools",
+    values: "Git, GitHub, Bitbucket, Sentry, Kloudfuse",
   },
 ];
 
 export const impact = [
-  { value: "50K+", label: "REQUESTS / DAY", detail: "Insurance Service ownership" },
+  {
+    value: "50K+",
+    label: "REQUESTS / DAY",
+    detail: "Insurance Service ownership",
+  },
   { value: "<200ms", label: "P99 LATENCY", detail: "Across critical APIs" },
-  { value: "60%", label: "LATENCY REDUCTION", detail: "Via concurrent orchestration" },
-  { value: "15+", label: "APIs MIGRATED", detail: "Rails to FastAPI" },
+  {
+    value: "60%",
+    label: "LATENCY REDUCTION",
+    detail: "Via concurrent orchestration",
+  },
+  {
+    value: "99.9%",
+    label: "PIPELINE AVAILABILITY",
+    detail: "Asynchronous invoice processing",
+  },
 ];
 
 export const experience = [
   {
     date: "APR 2026 — PRESENT",
-    role: "SDE 2",
-    company: "Tata 1mg",
+    role: "Software Development Engineer 2",
+    company: "Tata 1mg · Chandigarh, India",
     highlights: [
-      "Led migration of Insurance Category and Upsell services—10+ APIs, 2+ cron jobs, and AWS integrations—from Ruby on Rails to FastAPI.",
-      "Guided an intern through implementation, code reviews, and rollout support, delivering a zero-downtime production transition.",
+      "Owned an insurance-operations dashboard and mentored 2 interns through implementation and rollout, reducing manual processing from approximately 2 hours to 15 minutes.",
+      "Led the zero-downtime migration of Insurance Category and Insurance Upsell from Ruby on Rails to FastAPI across 15+ APIs, 5+ scheduled jobs, and AWS integrations.",
+      "Directed engineering quality and rollout by reviewing 30+ pull requests, resolving design risks, and coordinating 5+ production releases.",
     ],
   },
   {
     date: "JUL 2024 — APR 2026",
-    role: "SDE 1",
-    company: "Tata 1mg",
+    role: "Software Development Engineer 1",
+    company: "Tata 1mg · Chandigarh, India",
     highlights: [
-      "Owned the Insurance Service end-to-end, serving 50K+ requests/day with sub-200ms p99 latency and 3+ third-party integrations.",
-      "Built asynchronous PDF invoice and S3 upload workflows, removing blocking I/O from synchronous request paths.",
-      "Reduced p99 latency by 60% using concurrent WhatsApp, SMS, and email orchestration.",
-      "Owned critical user journeys and resolved high-priority production incidents within 12 hours.",
+      "Owned the Insurance Service end-to-end, serving 50K+ requests/day at sub-200ms p99 latency with 3+ third-party integrations.",
+      "Launched and scaled Insurance Category and Super Top-Up platforms across schemas, business workflows, APIs, and partner integrations.",
+      "Reduced p99 latency by approximately 60% by moving notification orchestration off critical paths and running WhatsApp, SMS, and email calls concurrently.",
+      "Built asynchronous PDF invoice and Amazon S3 upload pipelines that removed blocking I/O while maintaining 99.9% availability.",
+      "Developed member validation, reconciliation, and SSO APIs for Air India Maharaja Club, including standard and SSO corporate membership flows.",
+      "Delivered 3 partner initiatives across Home, Product Detail, and Order History, resolving high-priority incidents within 12 hours.",
     ],
   },
   {
     date: "JAN 2021 — MAY 2024",
     role: "Coordinator",
-    company: "App Team NITH",
+    company: "App Team, NIT Hamirpur",
     highlights: [
-      "Architected Node.js APIs for a college fest management platform.",
-      "Mentored junior batches through hands-on Git and GitHub workshops.",
-    ],
-  },
-  {
-    date: "JAN 2023 — MAR 2023",
-    role: "Problem Setter",
-    company: "Coding Shuttle · Remote",
-    highlights: [
-      "Designed and curated 80+ coding challenges to strengthen platform users' problem-solving skills.",
+      "Led backend delivery for a college-fest management platform, designing Node.js APIs that streamlined event and activity coordination.",
+      "Mentored junior developers through Git and GitHub workshops focused on version control, code review, and team collaboration.",
     ],
   },
 ];
@@ -66,22 +82,22 @@ export const experience = [
 export const projects = [
   {
     icon: "↗",
-    title: "Air India Maharaja Club",
+    title: "Distributed Event Scheduler (CRON-OS)",
     details: [
-      "Independently developed backend APIs for member ID validation and database reconciliation, enabling reliable SSO authentication across complex edge cases.",
-      "Revamped corporate membership workflows to support dual association with standard and SSO corporates while preserving existing user journeys and dashboard routing.",
+      "Designed a horizontally scalable scheduler that claims due tasks with PostgreSQL SKIP LOCKED, records a transactional outbox, and dispatches partition-ordered Kafka events to concurrent Go workers.",
+      "Implemented at-least-once delivery with idempotency, Redis locks and token buckets, exponential retries, dead-letter isolation, JWT authentication, optimistic concurrency, and Prometheus metrics.",
     ],
-    tags: ["FASTAPI", "PYTHON", "POSTGRESQL", "SSO"],
-    liveUrl: "https://www.1mg.com/information/maharaja-air-india",
+    tags: ["FASTAPI", "GO", "KAFKA", "POSTGRESQL", "REDIS", "REACT"],
+    liveUrl: "https://distributed-event-scheduler.vercel.app/",
   },
   {
     icon: "⌘",
-    title: "Personal Portfolio Platform",
+    title: "ReelScore",
     details: [
-      "Designed and developed a responsive personal portfolio showcasing projects, technical skills, and professional experience.",
-      "Built with React.js and JavaScript, including an EmailJS-powered communication workflow for direct visitor enquiries.",
+      "Built a privacy-first Chrome and Firefox extension that captures Instagram Reel activity through browser event listeners without private APIs or server-side tracking.",
+      "Persisted activity locally across 8 IndexedDB tables and transformed it into rolling analytics, score trends, heatmaps, leaderboards, search, and exportable reports.",
     ],
-    tags: ["REACT", "JAVASCRIPT"],
-    liveUrl: "https://aadityagagneja.vercel.app/",
+    tags: ["TYPESCRIPT", "REACT", "INDEXEDDB", "DEXIE", "MV3"],
+    liveUrl: "https://addons.mozilla.org/en-US/firefox/addon/reelscore/",
   },
 ];

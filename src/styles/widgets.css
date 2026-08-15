@@ -29,21 +29,21 @@
   }
 }
 footer {
-  margin-top: 48px;
-  border-top: 1px solid var(--line);
-  background: var(--low);
+  margin-top: 68px;
+  border-top: 1px solid color-mix(in srgb, var(--line) 58%, transparent);
+  background: color-mix(in srgb, var(--low) 84%, transparent);
 }
 footer > div {
-  padding: 22px 24px;
+  padding: 28px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font: 13px JetBrains Mono;
+  font: 12px IBM Plex Mono;
   color: var(--muted);
 }
 footer b {
   color: var(--text);
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 0.12em;
 }
 footer nav {
@@ -61,26 +61,48 @@ footer a:hover {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 12px;
-  border: 1px solid var(--line);
-  background: color-mix(in srgb, var(--low) 90%, transparent);
+  padding: 12px 14px;
+  border: 1px solid color-mix(in srgb, var(--outline) 45%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--low) 78%, transparent);
   color: var(--muted);
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.28);
   backdrop-filter: blur(12px);
   cursor: pointer;
   font:
-    9px JetBrains Mono,
+    9px IBM Plex Mono,
     monospace;
   letter-spacing: 0.1em;
   transition:
-    color 0.25s ease,
-    border-color 0.25s ease,
-    transform 0.25s ease;
+    opacity 180ms ease,
+    color 160ms ease,
+    border-color 160ms ease,
+    transform 150ms var(--ease-out),
+    box-shadow 160ms ease,
+    background 160ms ease;
+  opacity: 0;
+  pointer-events: auto;
+}
+.command-trigger:not(.is-visible) {
+  padding-inline: 12px;
+}
+.command-trigger:not(.is-visible) span,
+.command-trigger:not(.is-visible) kbd {
+  display: none;
+}
+.command-trigger:focus-visible {
+  opacity: 1;
+}
+.command-trigger.is-visible {
+  opacity: 1;
+  pointer-events: auto;
 }
 .command-trigger:hover {
   color: var(--text);
   border-color: var(--outline);
-  transform: translateY(-3px);
+  background: color-mix(in srgb, var(--container) 82%, transparent);
+  transform: translateY(-5px);
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.34);
 }
 .command-trigger i,
 .command-titlebar i {
@@ -88,7 +110,6 @@ footer a:hover {
   height: 7px;
   background: var(--accent);
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 12%, transparent);
-  animation: command-status 2s ease-in-out infinite;
 }
 .command-trigger kbd,
 .command-titlebar kbd,
@@ -98,6 +119,34 @@ footer a:hover {
   background: var(--container);
   color: var(--outline);
   font: inherit;
+  border-radius: 999px;
+}
+.command-close {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 7px 11px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--container);
+  color: var(--muted);
+  cursor: pointer;
+  font:
+    10px/1 IBM Plex Mono,
+    monospace;
+  letter-spacing: 0.08em;
+  transition:
+    color 0.22s ease,
+    border-color 0.22s ease,
+    background 0.22s ease,
+    transform 0.22s ease;
+}
+.command-close:hover,
+.command-close:focus-visible {
+  color: var(--text);
+  border-color: var(--outline);
+  background: var(--low);
+  transform: translateY(-1px);
+  outline: 0;
 }
 .command-overlay {
   position: fixed;
@@ -106,18 +155,17 @@ footer a:hover {
   padding: 15vh 20px 20px;
   background: rgba(0, 0, 0, 0.58);
   backdrop-filter: blur(7px);
-  animation: overlay-in 0.22s ease both;
 }
 .command-palette {
   width: min(560px, 100%);
   max-height: 70vh;
   margin: auto;
   overflow: auto;
-  border: 1px solid var(--outline);
-  background: var(--bg);
+  border: 1px solid color-mix(in srgb, var(--outline) 58%, transparent);
+  border-radius: 26px;
+  background: color-mix(in srgb, var(--bg) 94%, transparent);
   color: var(--text);
   box-shadow: 0 35px 100px rgba(0, 0, 0, 0.55);
-  animation: palette-in 0.42s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 .command-titlebar,
 .command-input,
@@ -132,7 +180,7 @@ footer a:hover {
   background: var(--high);
   color: var(--muted);
   font:
-    10px JetBrains Mono,
+    10px IBM Plex Mono,
     monospace;
 }
 .command-titlebar div {
@@ -145,7 +193,7 @@ footer a:hover {
   padding: 18px;
   border-bottom: 1px solid var(--line);
   font:
-    12px JetBrains Mono,
+    12px IBM Plex Mono,
     monospace;
 }
 .command-input > span {
@@ -169,18 +217,25 @@ footer a:hover {
 }
 .command-list button {
   width: 100%;
+  min-height: 44px;
   padding: 12px;
   border: 0;
   border-left: 2px solid transparent;
+  border-radius: 14px;
   display: flex;
   justify-content: space-between;
   background: transparent;
   color: var(--muted);
   cursor: pointer;
   font:
-    12px JetBrains Mono,
+    12px IBM Plex Mono,
     monospace;
   text-align: left;
+  transition:
+    transform 0.22s ease,
+    background 0.22s ease,
+    color 0.22s ease,
+    border-color 0.22s ease;
 }
 .command-list button:hover,
 .command-list button:focus-visible {
@@ -188,6 +243,12 @@ footer a:hover {
   background: var(--low);
   color: var(--text);
   outline: 0;
+}
+.command-list button:hover {
+  transform: translateX(4px);
+}
+.command-list button:focus-visible {
+  transition: none;
 }
 .command-actions {
   gap: 1px;
@@ -197,13 +258,14 @@ footer a:hover {
 .command-actions button,
 .command-actions a {
   flex: 1;
+  min-height: 44px;
   padding: 13px;
   border: 0;
   background: var(--low);
   color: var(--muted);
   cursor: pointer;
   font:
-    10px JetBrains Mono,
+    10px IBM Plex Mono,
     monospace;
   text-align: center;
 }
@@ -215,23 +277,6 @@ footer a:hover {
 @keyframes section-scan {
   to {
     transform: translateX(105%);
-  }
-}
-@keyframes command-status {
-  50% {
-    opacity: 0.45;
-    box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 5%, transparent);
-  }
-}
-@keyframes overlay-in {
-  from {
-    opacity: 0;
-  }
-}
-@keyframes palette-in {
-  from {
-    opacity: 0;
-    transform: translateY(-24px) scale(0.97);
   }
 }
 @keyframes prompt-blink {

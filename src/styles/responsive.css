@@ -14,53 +14,58 @@
   .nav {
     display: none;
     position: absolute;
-    top: 68px;
+    top: 78px;
     left: 0;
     right: 0;
     margin: 0;
-    padding: 16px 24px;
-    background: var(--bg);
-    border-bottom: 1px solid var(--line);
+    padding: 18px 24px;
+    background: color-mix(in srgb, var(--bg) 96%, transparent);
+    border-bottom: 1px solid color-mix(in srgb, var(--line) 65%, transparent);
     flex-direction: column;
-    gap: 0;
+    gap: 8px;
   }
   .nav.open {
     display: flex;
   }
   .nav a {
-    padding: 14px 0;
+    min-height: 44px;
+    padding: 14px 16px;
   }
   .nav-actions .resume-small {
     display: none;
   }
   .hero {
     min-height: 0;
-    padding: 64px 0;
+    padding: 72px 0 52px;
     grid-template-columns: 1fr;
     gap: 40px;
   }
   .hero-copy {
-    background-image:
-      linear-gradient(var(--container) 1px, transparent 1px),
-      linear-gradient(90deg, var(--container) 1px, transparent 1px);
-    background-size: 20px 20px;
-    padding: 24px;
-    margin: -24px;
+    padding: 0;
   }
   .hero h1 {
-    font-size: 38px;
+    max-width: none;
   }
   .rotating-role {
     width: min(100%, 520px);
   }
-  .intro {
-    font-size: 22px;
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hero-primary,
+  .hero-secondary {
+    text-align: center;
   }
   .terminal {
     margin: 20px 0 0;
   }
+  .terminal-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
   .section {
-    padding: 64px 0;
+    padding: 82px 0;
   }
   .about-layout {
     grid-template-columns: 1fr;
@@ -68,6 +73,17 @@
   }
   .impact-strip {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .availability {
+    grid-template-columns: 1fr;
+  }
+  .availability-panel {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .availability-meta {
+    grid-column: auto;
+    grid-template-columns: 1fr;
   }
   .skill-grid article {
     grid-column: span 6;
@@ -120,8 +136,25 @@
 }
 @media (max-width: 560px) {
   .availability {
-    grid-template-columns: 1fr;
     margin-top: 18px;
+    padding: 20px;
+    gap: 20px;
+  }
+  .nav-wrap {
+    height: 72px;
+  }
+  .availability-status strong {
+    font-size: 22px;
+  }
+  .availability-scheduler {
+    padding: 18px;
+  }
+  .scheduler-cta {
+    flex-direction: column;
+  }
+  .scheduler-cta a {
+    width: 100%;
+    text-align: center;
   }
   .command-trigger span {
     display: none;
@@ -139,23 +172,28 @@
     padding-right: 16px;
   }
   .brand {
-    font-size: 17px;
+    font-size: 16px;
   }
   .theme-button {
-    font-size: 22px;
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
   }
   .hero {
-    padding: 52px 8px;
+    padding: 48px 0 36px;
   }
   .hero h1 {
-    font-size: 34px;
+    font-size: 54px;
   }
-  .rotating-role {
-    margin-top: -4px;
+  .hero-copy {
+    padding: 0;
+  }
+  .hero-note {
+    line-height: 1.5;
   }
   .role-window-body {
-    min-height: 76px;
-    padding: 13px;
+    min-height: 64px;
+    padding: 12px 2px;
     align-items: flex-start;
     flex-wrap: wrap;
     gap: 5px 8px;
@@ -172,8 +210,12 @@
   }
   .facts {
     flex-direction: column;
-    gap: 12px;
-    margin-top: 36px;
+    gap: 0;
+    margin-top: 28px;
+  }
+  .facts div {
+    min-width: 0;
+    padding: 10px 0 0;
   }
   .impact-strip {
     grid-template-columns: 1fr;
@@ -184,6 +226,11 @@
   .terminal-body {
     padding: 18px;
     font-size: 12px;
+  }
+  .terminal-footer,
+  .terminal-meta,
+  .terminal-shortcuts {
+    width: 100%;
   }
   .section-head {
     align-items: flex-start;
@@ -196,14 +243,8 @@
   .about-copy h2 {
     font-size: 27px;
   }
-  .skill-grid {
-    display: block;
-  }
   .skill-grid article {
-    border-bottom: 1px solid var(--line);
-  }
-  .skill-grid article:last-child {
-    border: 0;
+    grid-column: span 12;
   }
   .project-grid article {
     min-height: 250px;
@@ -226,6 +267,42 @@
   footer nav {
     flex-wrap: wrap;
     gap: 12px 20px;
+  }
+}
+@media (hover: hover) and (pointer: fine) {
+  .app :is(a, button):not(:disabled):active {
+    transform: scale(0.97);
+    transition-duration: 100ms;
+  }
+}
+@media (hover: none), (pointer: coarse) {
+  .brand:hover {
+    letter-spacing: 0.08em;
+  }
+  .nav a:hover,
+  .resume-small:hover,
+  .theme-button:hover,
+  .hero-primary:hover,
+  .hero-secondary:hover,
+  .facts div:hover,
+  .terminal:hover,
+  .terminal-shortcuts button:hover,
+  .impact-strip article:hover,
+  .scheduler-cta a:hover,
+  .skill-grid article:hover,
+  .building-grid article:hover,
+  .timeline article:hover > div,
+  .timeline article:hover .node,
+  .project-grid article:hover,
+  .project-grid article:hover .project-icon,
+  .achievement-grid article:hover,
+  .education-card:hover,
+  .resume-large:hover,
+  .contact-links a:hover,
+  .command-trigger:hover,
+  .command-close:hover,
+  .command-list button:hover {
+    transform: none;
   }
 }
 @media (prefers-reduced-motion: reduce) {

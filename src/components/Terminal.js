@@ -3,9 +3,9 @@ import { useEffect, useRef, useState } from "react";
 const files = {
   "~": ["README.md", "contact.txt", "metrics", "projects", "skills.txt"],
   "~/metrics": ["latency.txt", "requests.txt", "reliability.txt"],
-  "~/projects": ["air-india-api", "portfolio"],
-  "~/projects/air-india-api": ["README.md", "stack.txt"],
-  "~/projects/portfolio": ["README.md", "stack.txt"],
+  "~/projects": ["cron-os", "reelscore"],
+  "~/projects/cron-os": ["README.md", "stack.txt"],
+  "~/projects/reelscore": ["README.md", "stack.txt"],
 };
 
 const fileContents = {
@@ -14,17 +14,25 @@ const fileContents = {
   "~/contact.txt":
     "Email: aadityaarora1215@gmail.com\nPhone: +91 9462160551\nLocation: Chandigarh, India",
   "~/skills.txt":
-    "Languages: Python, Java, Ruby, C++\nFrameworks: FastAPI, Sanic, Ruby on Rails\nData: MongoDB, PostgreSQL, Redis\nInfra: AWS, Kafka, Linux, Sentry",
+    "Languages: Python, Go, Ruby, C++, JavaScript, SQL\nFrameworks: FastAPI, Sanic, Ruby on Rails, Node.js, React\nData: PostgreSQL, MongoDB, Redis\nInfra: Kafka, AWS, Docker, Linux\nAI: Agentic workflows, MCP, reusable skills",
   "~/metrics/latency.txt": "p99 latency: sub-200ms\noptimization: 60% reduction",
   "~/metrics/requests.txt": "50K+ daily API requests served",
-  "~/metrics/reliability.txt": "status: operational\nfocus: resilient distributed systems",
-  "~/projects/air-india-api/README.md":
-    "Air India Maharaja Club\n\n- Developed backend APIs for member ID validation and database reconciliation, enabling reliable SSO authentication across complex edge cases.\n- Revamped corporate membership workflows for dual standard and SSO corporate association while preserving user journeys and dashboard routing.",
-  "~/projects/air-india-api/stack.txt": "FastAPI, Python , Postgresql",
-  "~/projects/portfolio/README.md":
-    "Personal Portfolio Platform\n\n- Responsive portfolio showcasing projects, skills, and professional experience.\n- React and JavaScript application with an EmailJS-powered visitor communication workflow.",
-  "~/projects/portfolio/stack.txt": "React, JavaScript",
+  "~/metrics/reliability.txt":
+    "invoice pipeline availability: 99.9%\nproduction releases coordinated: 5+",
+  "~/projects/cron-os/README.md":
+    "Distributed Event Scheduler (CRON-OS)\n\n- FastAPI control plane with PostgreSQL task claiming and transactional outbox.\n- Kafka dispatch to concurrent Go workers with idempotency, retries, rate limiting, and DLQ isolation.",
+  "~/projects/cron-os/stack.txt": "FastAPI, Go, Kafka, PostgreSQL, Redis, React",
+  "~/projects/reelscore/README.md":
+    "ReelScore\n\n- Privacy-first Chrome and Firefox extension for local Instagram Reel analytics.\n- Persists observed activity across 8 IndexedDB tables without private APIs or server-side tracking.",
+  "~/projects/reelscore/stack.txt": "TypeScript, React, IndexedDB, Dexie, Manifest V3",
 };
+
+const shortcuts = [
+  { label: "list", command: "ls" },
+  { label: "metrics", command: "tree ~/metrics" },
+  { label: "contact", command: "cat ~/contact.txt" },
+  { label: "whoami", command: "whoami" },
+];
 
 function Terminal() {
   const [cwd, setCwd] = useState("~");
@@ -137,6 +145,11 @@ function Terminal() {
     setCommand("");
   };
 
+  const runShortcut = (nextCommand) => {
+    run(nextCommand);
+    inputRef.current?.focus();
+  };
+
   const keyDown = (event) => {
     if (event.key === "ArrowUp" && history.length) {
       event.preventDefault();
@@ -171,13 +184,15 @@ function Terminal() {
         <i></i>
         <span>portfolio-shell — interactive</span>
       </div>
-      <div className="terminal-body" ref={outputRef} role="log" aria-live="polite">
-        {lines.map((line, index) => (
-          <div className={`terminal-line ${line.type}`} key={`${index}-${line.text}`}>
-            {line.prompt && <span className="prompt">{line.prompt} </span>}
-            <span>{line.text}</span>
-          </div>
-        ))}
+      <div className="terminal-body" ref={outputRef}>
+        <div className="terminal-output" role="log" aria-live="polite" aria-relevant="additions">
+          {lines.map((line, index) => (
+            <div className={`terminal-line ${line.type}`} key={`${index}-${line.text}`}>
+              {line.prompt && <span className="prompt">{line.prompt} </span>}
+              <span>{line.text}</span>
+            </div>
+          ))}
+        </div>
         <form className="terminal-input-row" onSubmit={submit}>
           <label htmlFor="terminal-command">aaditya@portfolio:{cwd}$</label>
           <input
@@ -192,6 +207,24 @@ function Terminal() {
             aria-label="Terminal command"
           />
         </form>
+      </div>
+      <div className="terminal-footer">
+        <div className="terminal-meta">
+          <span>cwd {cwd}</span>
+          <span>history {history.length}</span>
+          <span>mode interactive</span>
+        </div>
+        <div className="terminal-shortcuts">
+          {shortcuts.map((shortcut) => (
+            <button
+              key={shortcut.label}
+              type="button"
+              onClick={() => runShortcut(shortcut.command)}
+            >
+              {shortcut.label}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );
