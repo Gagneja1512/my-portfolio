@@ -7,12 +7,12 @@ export const skills = [
   {
     title: "Data & Infrastructure",
     values:
-      "PostgreSQL, MongoDB, Redis, Kafka, AWS (S3/SQS/SNS/EC2), Docker, Linux",
+      "PostgreSQL, MongoDB, Redis, Kafka, Elasticsearch, AWS (S3/SQS/SNS/EC2), Docker, Linux",
   },
   {
     title: "AI Engineering",
     values:
-      "Agentic AI workflows, Model Context Protocol (MCP), reusable skills, AI-assisted development",
+      "RAG, LangChain, LangGraph, LangSmith, Qdrant, reusable skills, AI-assisted development",
   },
   {
     title: "Engineering",
@@ -50,9 +50,11 @@ export const experience = [
     role: "Software Development Engineer 2",
     company: "Tata 1mg · Chandigarh, India",
     highlights: [
-      "Owned an insurance-operations dashboard and mentored 2 interns through implementation and rollout, reducing manual processing from approximately 2 hours to 15 minutes.",
-      "Led the zero-downtime migration of Insurance Category and Insurance Upsell from Ruby on Rails to FastAPI across 15+ APIs, 5+ scheduled jobs, and AWS integrations.",
-      "Directed engineering quality and rollout by reviewing 30+ pull requests, resolving design risks, and coordinating 5+ production releases.",
+      "Engineered fuzzy and phonetic search across symptoms and specialties on the Tata 1mg home screen using Elasticsearch, enabling typo-tolerant matching (e.g., fvrr -> fever) and Hindi/colloquial transliterations (e.g., bukhar) to enhance discoverability.",
+      "Re-architected the doctor consultation assignment engine using Redis Sorted Sets (ZSETs), transitioning from workload/tie-breaking allocation to a priority-ranked routing flow that reduced First Response Time (FRT) by 30–40 seconds.",
+      "Deployed an automated on-call operations bot using RAG with Qdrant vector database, LangChain, and OpenAI APIs, instrumented with LangSmith for evaluation and tracing, resolving ~50% of recurring operational queries without human triage.",
+      "Spearheaded an internal insurance-operations dashboard, establishing system design, delegating execution, and mentoring 2 interns; eliminated spreadsheet-based tracking to boost operational efficiency by 90%.",
+      "Led the zero-downtime migration of Insurance Category and Upsell services from Ruby on Rails to Python/FastAPI, encompassing 15+ APIs, 5+ scheduled background jobs, and AWS cloud services while steering code reviews and staged rollouts.",
     ],
   },
   {
@@ -60,12 +62,11 @@ export const experience = [
     role: "Software Development Engineer 1",
     company: "Tata 1mg · Chandigarh, India",
     highlights: [
-      "Owned the Insurance Service end-to-end, serving 50K+ requests/day at sub-200ms p99 latency with 3+ third-party integrations.",
-      "Launched and scaled Insurance Category and Super Top-Up platforms across schemas, business workflows, APIs, and partner integrations.",
-      "Reduced p99 latency by approximately 60% by moving notification orchestration off critical paths and running WhatsApp, SMS, and email calls concurrently.",
-      "Built asynchronous PDF invoice and Amazon S3 upload pipelines that removed blocking I/O while maintaining 99.9% availability.",
-      "Developed member validation, reconciliation, and SSO APIs for Air India Maharaja Club, including standard and SSO corporate membership flows.",
-      "Delivered 3 partner initiatives across Home, Product Detail, and Order History, resolving high-priority incidents within 12 hours.",
+      "Managed core Insurance backend services handling 50K+ requests/day at sub-200ms p99 latency; directed schema modeling, Redis caching, telemetry, and 3+ third-party integrations.",
+      "Scaled Insurance Category and Super Top-Up platforms across underlying business logic, transactional databases, and external provider connections.",
+      "Designed asynchronous invoice generation pipelines with Amazon S3 offloading, decoupling heavy I/O from request lifecycles to increase fault tolerance while maintaining 99.9% availability.",
+      "Implemented secure endpoints for the Air India Maharaja Club partnership, providing member validation, data reconciliation, and corporate SSO authentication.",
+      "Shipped 3 high-impact partner initiatives across consumer search, product details, and checkout journeys, driving INR 30+ crore in annual GMV.",
     ],
   },
   {
@@ -84,8 +85,8 @@ export const projects = [
     icon: "↗",
     title: "Distributed Event Scheduler (CRON-OS)",
     details: [
-      "Designed a horizontally scalable scheduler that claims due tasks with PostgreSQL SKIP LOCKED, records a transactional outbox, and dispatches partition-ordered Kafka events to concurrent Go workers.",
-      "Implemented at-least-once delivery with idempotency, Redis locks and token buckets, exponential retries, dead-letter isolation, JWT authentication, optimistic concurrency, and Prometheus metrics.",
+      "Designed a horizontally scalable scheduling platform that atomically claims due tasks with PostgreSQL SKIP LOCKED, records a transactional outbox, and dispatches events through Kafka to concurrent Go webhook workers.",
+      "Implemented at-least-once delivery with execution-level idempotency, Redis distributed locks and token buckets, capped exponential retries, and JWT authentication.",
     ],
     tags: ["FASTAPI", "GO", "KAFKA", "POSTGRESQL", "REDIS", "REACT"],
     liveUrl: "https://distributed-event-scheduler.vercel.app/",

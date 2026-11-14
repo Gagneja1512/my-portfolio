@@ -222,10 +222,11 @@ function App() {
           <div className="nav-actions">
             <a
               className="resume-small"
-              href="/Aaditya_Gagneja_Resume.pdf"
-              download="Aaditya_Gagneja_Resume.pdf"
+              href="https://drive.google.com/file/d/18NH18EiXKWzL5FZ1wgabLACe7kG6Uv1G/view?usp=drive_link"
+              target="_blank"
+              rel="noreferrer"
             >
-              Resume
+              Resume ↗
             </a>
             <button
               className="theme-button"
@@ -266,10 +267,11 @@ function App() {
               </a>
               <a
                 className="hero-secondary"
-                href="/Aaditya_Gagneja_Resume.pdf"
-                download="Aaditya_Gagneja_Resume.pdf"
+                href="https://drive.google.com/file/d/18NH18EiXKWzL5FZ1wgabLACe7kG6Uv1G/view?usp=drive_link"
+                target="_blank"
+                rel="noreferrer"
               >
-                DOWNLOAD RESUME
+                VIEW RESUME ↗
               </a>
             </div>
             <div className="facts">
@@ -534,12 +536,12 @@ function App() {
             <article className="reveal reveal-up" data-reveal style={{ "--reveal-delay": "0ms" }}>
               <h3>CodeChef 4★</h3>
               <p>Max rating: 1828</p>
-              <small>Ranked 92 / 2,200+ in Starters 46</small>
+              <small>Secured rank 92 / 2,200+ in Starters 46</small>
             </article>
             <article className="reveal reveal-up" data-reveal style={{ "--reveal-delay": "90ms" }}>
               <h3>Codeforces Specialist</h3>
               <p>Max rating: 1418</p>
-              <small>Ranked 1,486 / 12,000+ in Round 820</small>
+              <small>Achieved rank 1,486 / 12,000+ in Round 820</small>
             </article>
           </div>
         </section>
@@ -570,14 +572,15 @@ function App() {
             </h2>
             <p>
               Interested in backend architecture, system design, or technical leadership? Drop a
-              line or download my technical profile.
+              line or view my technical profile.
             </p>
             <a
               className="resume-large"
-              href="/Aaditya_Gagneja_Resume.pdf"
-              download="Aaditya_Gagneja_Resume.pdf"
+              href="https://drive.google.com/file/d/18NH18EiXKWzL5FZ1wgabLACe7kG6Uv1G/view?usp=drive_link"
+              target="_blank"
+              rel="noreferrer"
             >
-              DOWNLOAD_RESUME.PDF <span>⇩</span>
+              VIEW_RESUME <span>↗</span>
             </a>
             <div className="contact-links" aria-label="Contact and profile links">
               <a
@@ -704,8 +707,12 @@ function App() {
               >
                 {light ? "Switch to dark mode" : "Switch to light mode"}
               </button>
-              <a href="/Aaditya_Gagneja_Resume.pdf" download="Aaditya_Gagneja_Resume.pdf">
-                Download résumé ↓
+              <a
+                href="https://drive.google.com/file/d/18NH18EiXKWzL5FZ1wgabLACe7kG6Uv1G/view?usp=drive_link"
+                target="_blank"
+                rel="noreferrer"
+              >
+                View résumé ↗
               </a>
             </div>
           </section>

@@ -14,7 +14,7 @@ const fileContents = {
   "~/contact.txt":
     "Email: aadityaarora1215@gmail.com\nPhone: +91 9462160551\nLocation: Chandigarh, India",
   "~/skills.txt":
-    "Languages: Python, Go, Ruby, C++, JavaScript, SQL\nFrameworks: FastAPI, Sanic, Ruby on Rails, Node.js, React\nData: PostgreSQL, MongoDB, Redis\nInfra: Kafka, AWS, Docker, Linux\nAI: Agentic workflows, MCP, reusable skills",
+    "Languages: Python, Go, Ruby, C++, JavaScript, SQL\nFrameworks: FastAPI, Sanic, Ruby on Rails, Node.js, React\nData & Infra: PostgreSQL, MongoDB, Redis, Kafka, Elasticsearch, AWS, Docker, Linux\nAI: RAG, LangChain, LangGraph, LangSmith, Qdrant",
   "~/metrics/latency.txt": "p99 latency: sub-200ms\noptimization: 60% reduction",
   "~/metrics/requests.txt": "50K+ daily API requests served",
   "~/metrics/reliability.txt":
